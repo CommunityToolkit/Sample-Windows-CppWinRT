@@ -6,13 +6,17 @@
     xmlns:island="using:CSharpIslandRuntimeComponent"
     xmlns:local="using:CppWinRTToolkitIsland"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-    <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Orientation="Horizontal">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <island:ToolkitIsland />
         <Button x:Name="myButton" Click="ClickHandler">Click Me</Button>
+        <muxc:InfoBar
+            Title="Title"
+            IsOpen="True"
+            Message="Essential app message for your users to be informed of, acknowledge, or take action on."
+            Severity="Informational" />
+        <!--<muxc:ProgressRing IsActive="True" /> General Exception - see https://github.com/microsoft/microsoft-ui-xaml/issues/5041 -->
     </StackPanel>
 </Page>

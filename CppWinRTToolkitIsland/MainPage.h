@@ -2,7 +2,6 @@
 
 #include "MainPage.g.h"
 #include "winrt/CSharpIslandRuntimeComponent.h"
-#include "winrt/CSharpIslandRuntimeComponent.CSharpIslandRuntimeComponent_XamlTypeInfo.h"
 
 namespace winrt::CppWinRTToolkitIsland::implementation
 {
