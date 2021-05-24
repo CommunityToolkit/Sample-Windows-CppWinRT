@@ -17,6 +17,6 @@
             IsOpen="True"
             Message="Essential app message for your users to be informed of, acknowledge, or take action on."
             Severity="Informational" />
-        <!--<muxc:ProgressRing IsActive="True" /> General Exception - see https://github.com/microsoft/microsoft-ui-xaml/issues/5041 -->
+        <muxc:ProgressRing IsActive="True" />
     </StackPanel>
 </Page>
