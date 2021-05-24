@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Collections.IReadOnlyObservableGroup">
+            <summary>
+            An interface for a grouped collection of items.
+            It allows us to use x:Bind with <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> and <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2" /> by providing
+            a non-generic type that we can declare using x:DataType.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Collections.IReadOnlyObservableGroup.Key">
+            <summary>
+            Gets the key for the current collection, as an <see cref="T:System.Object" />.
+            It is immutable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Collections.IReadOnlyObservableGroup.Count">
+            <summary>
+            Gets the number of items currently in the grouped collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Collections.ObservableGroup`2">
+            <summary>
+            An observable group.
+            It associates a <see cref="P:Microsoft.Toolkit.Collections.ObservableGroup`2.Key" /> to an <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+        </member>
+        <member name="F:Microsoft.Toolkit.Collections.ObservableGroup`2.KeyChangedEventArgs">
+            <summary>
+            The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs" /> for <see cref="P:Microsoft.Toolkit.Collections.ObservableGroup`2.Key" /></summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroup`2.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> class.
+            </summary>
+            <param name="key">The key for the group.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroup`2.#ctor(System.Linq.IGrouping{`0,`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> class.
+            </summary>
+            <param name="grouping">The grouping to fill the group.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroup`2.#ctor(`0,System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> class.
+            </summary>
+            <param name="key">The key for the group.</param>
+            <param name="collection">The initial collection of data to add to the group.</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Collections.ObservableGroup`2.Key">
+            <summary>
+            Gets or sets the key of the group.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Collections.ObservableGroup`2.Microsoft#Toolkit#Collections#IReadOnlyObservableGroup#Key" />
+        <member name="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2">
+            <summary>
+            An observable list of observable groups.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2.#ctor(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> class.
+            </summary>
+            <param name="collection">The initial data to add in the grouped collection.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2.TryGetList(System.Collections.Generic.List{Microsoft.Toolkit.Collections.ObservableGroup{`0,`1}}@)">
+            <summary>
+            Tries to get the underlying <see cref="T:System.Collections.Generic.List`1" /> instance, if present.
+            </summary>
+            <param name="list">The resulting <see cref="T:System.Collections.Generic.List`1" />, if one was in use.</param>
+            <returns>Whether or not a <see cref="T:System.Collections.Generic.List`1" /> instance has been found.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions">
+            <summary>
+            The extensions methods to simplify the usage of <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.First``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0)">
+            <summary>
+            Return the first group with <paramref name="key" /> key.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group to query.</param>
+            <returns>The first group matching <paramref name="key" />.</returns>
+            <exception cref="T:System.InvalidOperationException">The target group does not exist.</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.FirstOrDefault``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0)">
+            <summary>
+            Return the first group with <paramref name="key" /> key or null if not found.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group to query.</param>
+            <returns>The first group matching <paramref name="key" /> or null.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.ElementAt``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,System.Int32)">
+            <summary>
+            Return the element at position <paramref name="index" /> from the first group with <paramref name="key" /> key.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group to query.</param>
+            <param name="index">The index of the item from the targeted group.</param>
+            <returns>The element.</returns>
+            <exception cref="T:System.InvalidOperationException">The target group does not exist.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero or <paramref name="index" /> is greater than the group elements' count.</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.ElementAtOrDefault``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,System.Int32)">
+            <summary>
+            Return the element at position <paramref name="index" /> from the first group with <paramref name="key" /> key.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group to query.</param>
+            <param name="index">The index of the item from the targeted group.</param>
+            <returns>The element or default(TValue) if it does not exist.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.AddGroup``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,``1)">
+            <summary>
+            Adds a key-value <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> item into a target <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" />.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where <paramref name="value" /> will be added.</param>
+            <param name="value">The value to add.</param>
+            <returns>The added <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.AddGroup``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,``1[])">
+            <summary>
+            Adds a key-collection <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> item into a target <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" />.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where <paramref name="collection" /> will be added.</param>
+            <param name="collection">The collection to add.</param>
+            <returns>The added <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.AddGroup``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,System.Collections.Generic.IEnumerable{``1})">
+            <summary>
+            Adds a key-collection <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> item into a target <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" />.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where <paramref name="collection" /> will be added.</param>
+            <param name="collection">The collection to add.</param>
+            <returns>The added <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.AddItem``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,``1)">
+            <summary>
+            Add <paramref name="item" /> into the first group with <paramref name="key" /> key.
+            If the group does not exist, it will be added.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where the <paramref name="item" /> should be added.</param>
+            <param name="item">The item to add.</param>
+            <returns>The instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> which will receive the value. It will either be an existing group or a new group.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.InsertItem``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,System.Int32,``1)">
+            <summary>
+            Insert <paramref name="item" /> into the first group with <paramref name="key" /> key at <paramref name="index" />.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where to insert <paramref name="item" />.</param>
+            <param name="index">The index where to insert <paramref name="item" />.</param>
+            <param name="item">The item to add.</param>
+            <returns>The instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> which will receive the value.</returns>
+            <exception cref="T:System.InvalidOperationException">The target group does not exist.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero or <paramref name="index" /> is greater than the group elements' count.</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.SetItem``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,System.Int32,``1)">
+            <summary>
+            Replace the element at <paramref name="index" /> with <paramref name="item" /> in the first group with <paramref name="key" /> key.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where to replace the item.</param>
+            <param name="index">The index where to insert <paramref name="item" />.</param>
+            <param name="item">The item to add.</param>
+            <returns>The instance of the <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> which will receive the value.</returns>
+            <exception cref="T:System.InvalidOperationException">The target group does not exist.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero or <paramref name="index" /> is greater than the group elements' count.</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.RemoveGroup``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0)">
+            <summary>
+            Remove the first occurrence of the group with <paramref name="key" /> from the <paramref name="source" /> grouped collection.
+            It will not do anything if the group does not exist.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group to remove.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.RemoveItem``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,``1,System.Boolean)">
+            <summary>
+            Remove the first <paramref name="item" /> from the first group with <paramref name="key" /> from the <paramref name="source" /> grouped collection.
+            It will not do anything if the group or the item does not exist.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where the <paramref name="item" /> should be removed.</param>
+            <param name="item">The item to remove.</param>
+            <param name="removeGroupIfEmpty">If true (default value), the group will be removed once it becomes empty.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ObservableGroupedCollectionExtensions.RemoveItemAt``2(Microsoft.Toolkit.Collections.ObservableGroupedCollection{``0,``1},``0,System.Int32,System.Boolean)">
+            <summary>
+            Remove the item at <paramref name="index" /> from the first group with <paramref name="key" /> from the <paramref name="source" /> grouped collection.
+            It will not do anything if the group or the item does not exist.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+            <param name="source">The source <see cref="T:Microsoft.Toolkit.Collections.ObservableGroupedCollection`2" /> instance.</param>
+            <param name="key">The key of the group where the item at <paramref name="index" /> should be removed.</param>
+            <param name="index">The index of the item to remove in the group.</param>
+            <param name="removeGroupIfEmpty">If true (default value), the group will be removed once it becomes empty.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero or <paramref name="index" /> is greater than the group elements' count.</exception>
+        </member>
+        <member name="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2">
+            <summary>
+            A read-only observable group. It associates a <see cref="P:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2.Key" /> to a <see cref="T:System.Collections.ObjectModel.ReadOnlyObservableCollection`1" />.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue">The type of the items in the collection.</typeparam>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2.#ctor(`0,System.Collections.ObjectModel.ObservableCollection{`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2" /> class.
+            </summary>
+            <param name="key">The key of the group.</param>
+            <param name="collection">The collection of items to add in the group.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2.#ctor(Microsoft.Toolkit.Collections.ObservableGroup{`0,`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2" /> class.
+            </summary>
+            <param name="group">The <see cref="T:Microsoft.Toolkit.Collections.ObservableGroup`2" /> to wrap.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2.#ctor(`0,System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2" /> class.
+            </summary>
+            <param name="key">The key of the group.</param>
+            <param name="collection">The collection of items to add in the group.</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2.Key">
+            <summary>
+            Gets the key for the current collection, as an <see cref="T:System.Object" />.
+            It is immutable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Collections.ReadOnlyObservableGroup`2.Microsoft#Toolkit#Collections#IReadOnlyObservableGroup#Key" />
+        <member name="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2">
+            <summary>
+            A read-only list of groups.
+            </summary>
+            <typeparam name="TKey">The type of the group key.</typeparam>
+            <typeparam name="TValue"> The type of the items in the collection.</typeparam>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2.#ctor(Microsoft.Toolkit.Collections.ObservableGroupedCollection{`0,`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2" /> class.
+            </summary>
+            <param name="collection">The source collection to wrap.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Toolkit.Collections.ReadOnlyObservableGroup{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2" /> class.
+            </summary>
+            <param name="collection">The initial data to add in the grouped collection.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2.#ctor(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Collections.ReadOnlyObservableGroupedCollection`2" /> class.
+            </summary>
+            <param name="collection">The initial data to add in the grouped collection.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Collections.IIncrementalSource`1">
+            <summary>
+            This interface represents a data source whose items can be loaded incrementally.
+            </summary>
+            <typeparam name="TSource">Type of collection element.</typeparam>
+        </member>
+        <member name="M:Microsoft.Toolkit.Collections.IIncrementalSource`1.GetPagedItemsAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            This method is invoked every time the view need to show more items. Retrieves items based on <paramref name="pageIndex" /> and <paramref name="pageSize" /> arguments.
+            </summary>
+            <param name="pageIndex">
+            The zero-based index of the page that corresponds to the items to retrieve.
+            </param>
+            <param name="pageSize">
+            The number of <typeparamref name="TSource" /> items to retrieve for the specified <paramref name="pageIndex" />.
+            </param>
+            <param name="cancellationToken">
+            Used to propagate notification that operation should be canceled.
+            </param>
+            <returns>
+            Returns a collection of <typeparamref name="TSource" />.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Converters">
+            <summary>
+            Set of helpers to convert between data types and notations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Converters.ToFileSizeString(System.Int64)">
+            <summary>
+            Translate numeric file size in bytes to a human-readable shorter string format.
+            </summary>
+            <param name="size">File size in bytes.</param>
+            <returns>Returns file size short string.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Deferred.DeferredCancelEventArgs">
+            <summary>
+                <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" /> which can also be canceled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Deferred.DeferredCancelEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the event should be canceled.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Deferred.DeferredEventArgs">
+            <summary>
+                <see cref="T:System.EventArgs" /> which can retrieve a <see cref="T:Microsoft.Toolkit.Deferred.EventDeferral" /> in order to process data asynchronously before an <see cref="T:System.EventHandler" /> completes and returns to the calling control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Deferred.DeferredEventArgs.Empty">
+            <summary>
+            Gets a new <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" /> to use in cases where no <see cref="T:System.EventArgs" /> wish to be provided.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.DeferredEventArgs.GetDeferral">
+            <summary>
+            Returns an <see cref="T:Microsoft.Toolkit.Deferred.EventDeferral" /> which can be completed when deferred event is ready to continue.
+            </summary>
+            <returns>
+                <see cref="T:Microsoft.Toolkit.Deferred.EventDeferral" /> instance.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.DeferredEventArgs.GetCurrentDeferralAndReset">
+            <summary>
+            DO NOT USE - This is a support method used by <see cref="T:Microsoft.Toolkit.Deferred.EventHandlerExtensions" />. It is public only for
+            additional usage within extensions for the UWP based TypedEventHandler extensions.
+            </summary>
+            <returns>Internal EventDeferral reference</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Deferred.EventDeferral">
+            <summary>
+            Deferral handle provided by a <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.EventDeferral.Complete">
+            <summary>
+            Call when finished with the Deferral.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.EventDeferral.WaitForCompletion(System.Threading.CancellationToken)">
+            <summary>
+            Waits for the <see cref="T:Microsoft.Toolkit.Deferred.EventDeferral" /> to be completed by the event handler.
+            </summary>
+            <param name="cancellationToken">
+                <see cref="T:System.Threading.CancellationToken" />.</param>
+            <returns>
+                <see cref="T:System.Threading.Tasks.Task" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.EventDeferral.Dispose">
+            <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Microsoft.Toolkit.Deferred.EventHandlerExtensions">
+            <summary>
+            Extensions to <see cref="T:System.EventHandler`1" /> for Deferred Events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.EventHandlerExtensions.InvokeAsync``1(System.EventHandler{``0},System.Object,``0)">
+            <summary>
+            Use to invoke an async <see cref="T:System.EventHandler`1" /> using <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" />.
+            </summary>
+            <typeparam name="T">
+                <see cref="T:System.EventArgs" /> type.</typeparam>
+            <param name="eventHandler">
+                <see cref="T:System.EventHandler`1" /> to be invoked.</param>
+            <param name="sender">Sender of the event.</param>
+            <param name="eventArgs">
+                <see cref="T:System.EventArgs" /> instance.</param>
+            <returns>
+                <see cref="T:System.Threading.Tasks.Task" /> to wait on deferred event handler.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Deferred.EventHandlerExtensions.InvokeAsync``1(System.EventHandler{``0},System.Object,``0,System.Threading.CancellationToken)">
+            <summary>
+            Use to invoke an async <see cref="T:System.EventHandler`1" /> using <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" /> with a <see cref="T:System.Threading.CancellationToken" />.
+            </summary>
+            <typeparam name="T">
+                <see cref="T:System.EventArgs" /> type.</typeparam>
+            <param name="eventHandler">
+                <see cref="T:System.EventHandler`1" /> to be invoked.</param>
+            <param name="sender">Sender of the event.</param>
+            <param name="eventArgs">
+                <see cref="T:System.EventArgs" /> instance.</param>
+            <param name="cancellationToken">
+                <see cref="T:System.Threading.CancellationToken" /> option.</param>
+            <returns>
+                <see cref="T:System.Threading.Tasks.Task" /> to wait on deferred event handler.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.ArrayExtensions">
+            <summary>
+            Helpers for working with arrays.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.ArrayExtensions.GetColumn``1(``0[][],System.Int32)">
+            <summary>
+            Yields a column from a jagged array.
+            An exception will be thrown if the column is out of bounds, and return default in places where there are no elements from inner arrays.
+            Note: There is no equivalent GetRow method, as you can use array[row] to retrieve.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="rectarray">The source array.</param>
+            <param name="column">Column record to retrieve, 0-based index.</param>
+            <returns>Yielded enumerable of column elements for given column, and default values for smaller inner arrays.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.ArrayExtensions.ToArrayString``1(``0[])">
+            <summary>
+            Returns a simple string representation of an array.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="array">The source array.</param>
+            <returns>The <see cref="T:System.String" /> representation of the array.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.ArrayExtensions.ToArrayString``1(``0[][])">
+            <summary>
+            Returns a simple string representation of a jagged array.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="mdarray">The source array.</param>
+            <returns>String representation of the array.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.ArrayExtensions.ToArrayString``1(``0[0:,0:])">
+            <summary>
+            Returns a simple string representation of a 2D array.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="array">The source array.</param>
+            <returns>The <see cref="T:System.String" /> representation of the array.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.StringExtensions">
+            <summary>
+            Helpers for working with strings and string representations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.PhoneNumberRegex">
+            <summary>
+            Regular expression for matching a phone number.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.CharactersRegex">
+            <summary>
+            Regular expression for matching a string that contains only letters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.EmailRegex">
+            <summary>
+            Regular expression for matching an email address.
+            </summary>
+            <remarks>General Email Regex (RFC 5322 Official Standard) from https://emailregex.com.</remarks>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.RemoveHtmlTagsRegex">
+            <summary>
+            Regular expression of HTML tags to remove.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.RemoveHtmlCommentsRegex">
+            <summary>
+            Regular expression for removing comments from HTML.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.RemoveHtmlScriptsRegex">
+            <summary>
+            Regular expression for removing scripts from HTML.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.StringExtensions.RemoveHtmlStylesRegex">
+            <summary>
+            Regular expression for removing styles from HTML.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.IsEmail(System.String)">
+            <summary>
+            Determines whether a string is a valid email address.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns>
+                <c>true</c> for a valid email address; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.IsDecimal(System.String)">
+            <summary>
+            Determines whether a string is a valid decimal number.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns>
+                <c>true</c> for a valid decimal number; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.IsNumeric(System.String)">
+            <summary>
+            Determines whether a string is a valid integer.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns>
+                <c>true</c> for a valid integer; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.IsPhoneNumber(System.String)">
+            <summary>
+            Determines whether a string is a valid phone number.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns>
+                <c>true</c> for a valid phone number; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.IsCharacterString(System.String)">
+            <summary>
+            Determines whether a string contains only letters.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns>
+                <c>true</c> if the string contains only letters; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.DecodeHtml(System.String)">
+            <summary>
+            Returns a string with HTML comments, scripts, styles, and tags removed.
+            </summary>
+            <param name="htmlText">HTML string.</param>
+            <returns>Decoded HTML string.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.FixHtml(System.String)">
+            <summary>
+            Returns a string with HTML comments, scripts, and styles removed.
+            </summary>
+            <param name="html">HTML string to fix.</param>
+            <returns>Fixed HTML string.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.Truncate(System.String,System.Int32)">
+            <summary>
+            Truncates a string to the specified length.
+            </summary>
+            <param name="value">The string to be truncated.</param>
+            <param name="length">The maximum length.</param>
+            <returns>Truncated string.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.AsFormat(System.String,System.Object[])">
+            <summary>
+            Provide better linking for resourced strings.
+            </summary>
+            <param name="format">The format of the string being linked.</param>
+            <param name="args">The object which will receive the linked String.</param>
+            <returns>Truncated string.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.StringExtensions.Truncate(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Truncates a string to the specified length.
+            </summary>
+            <param name="value">The string to be truncated.</param>
+            <param name="length">The maximum length.</param>
+            <param name="ellipsis">
+                <c>true</c> to add ellipsis to the truncated text; otherwise, <c>false</c>.</param>
+            <returns>Truncated string.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.TaskExtensions">
+            <summary>
+            Helpers for working with tasks.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.TaskExtensions.GetResultOrDefault(System.Threading.Tasks.Task)">
+            <summary>
+            Gets the result of a <see cref="T:System.Threading.Tasks.Task" /> if available, or <see langword="null" /> otherwise.
+            </summary>
+            <param name="task">The input <see cref="T:System.Threading.Tasks.Task" /> instance to get the result for.</param>
+            <returns>The result of <paramref name="task" /> if completed successfully, or <see langword="default" /> otherwise.</returns>
+            <remarks>
+            This method does not block if <paramref name="task" /> has not completed yet. Furthermore, it is not generic
+            and uses reflection to access the <see cref="P:System.Threading.Tasks.Task`1.Result" /> property and boxes the result if it's
+            a value type, which adds overhead. It should only be used when using generics is not possible.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.TaskExtensions.GetResultOrDefault``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Gets the result of a <see cref="T:System.Threading.Tasks.Task`1" /> if available, or <see langword="default" /> otherwise.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:System.Threading.Tasks.Task`1" /> to get the result for.</typeparam>
+            <param name="task">The input <see cref="T:System.Threading.Tasks.Task`1" /> instance to get the result for.</param>
+            <returns>The result of <paramref name="task" /> if completed successfully, or <see langword="default" /> otherwise.</returns>
+            <remarks>This method does not block if <paramref name="task" /> has not completed yet.</remarks>
+        </member>
+    </members>
+</doc>

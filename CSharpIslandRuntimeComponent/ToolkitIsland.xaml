@@ -2,6 +2,7 @@
     x:Class="CSharpIslandRuntimeComponent.ToolkitIsland"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:CSharpIslandRuntimeComponent"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,7 +10,41 @@
     d:DesignWidth="400"
     mc:Ignorable="d">
 
-    <Grid Margin="8">
+    <StackPanel Margin="8">
         <TextBlock Text="🦙 This is from our C# component!" />
-    </Grid>
+        <controls:TabbedCommandBar>
+            <controls:TabbedCommandBar.PaneFooter>
+                <CommandBar Background="Transparent" DefaultLabelPosition="Right">
+                    <AppBarButton Icon="Share" Label="Share" />
+                    <AppBarButton Icon="Message" Label="Comments" />
+                </CommandBar>
+            </controls:TabbedCommandBar.PaneFooter>
+            <controls:TabbedCommandBar.MenuItems>
+                <controls:TabbedCommandBarItem Header="Home">
+                    <AppBarButton Icon="Undo" Label="Undo" />
+                    <AppBarButton Icon="Redo" Label="Redo" />
+                    <AppBarButton Icon="Paste" Label="Paste" />
+                </controls:TabbedCommandBarItem>
+                <controls:TabbedCommandBarItem Header="Insert">
+                    <AppBarButton Icon="Pictures" Label="Pictures">
+                        <AppBarButton.Flyout>
+                            <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                                <MenuFlyoutItem Text="This Device">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEC4E;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Stock Images">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE721;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Icon="Globe" Text="Online Pictures" />
+                            </MenuFlyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                </controls:TabbedCommandBarItem>
+            </controls:TabbedCommandBar.MenuItems>
+        </controls:TabbedCommandBar>
+    </StackPanel>
 </UserControl>

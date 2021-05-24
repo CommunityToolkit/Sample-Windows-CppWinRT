@@ -1,0 +1,791 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit.Uwp.UI.Controls.Primitives</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView">
+            <summary>
+            The AdaptiveGridView control allows to present information within a Grid View perfectly adjusting the
+            total display available space. It reacts to changes in the layout as well as the content so it can adapt
+            to different form factors automatically.
+            </summary>
+            <remarks>
+            The number and the width of items are calculated based on the
+            screen resolution in order to fully leverage the available screen space. The property ItemsHeight define
+            the items fixed height and the property DesiredWidth sets the minimum width for the elements to add a
+            new column.</remarks>
+            <summary>
+            The AdaptiveGridView control allows to present information within a Grid View perfectly adjusting the
+            total display available space. It reacts to changes in the layout as well as the content so it can adapt
+            to different form factors automatically.
+            </summary>
+            <remarks>
+            The number and the width of items are calculated based on the
+            screen resolution in order to fully leverage the available screen space. The property ItemsHeight define
+            the items fixed height and the property DesiredWidth sets the minimum width for the elements to add a
+            new column.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.PrepareContainerForItemOverride(Windows.UI.Xaml.DependencyObject,System.Object)">
+            <summary>
+            Prepares the specified element to display the specified item.
+            </summary>
+            <param name="obj">The element that's used to display the specified item.</param>
+            <param name="item">The item to display.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.CalculateItemWidth(System.Double)">
+            <summary>
+            Calculates the width of the grid items.
+            </summary>
+            <param name="containerWidth">The width of the container control.</param>
+            <returns>The calculated item width.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.OnApplyTemplate">
+            <summary>
+            Invoked whenever application code or internal processes (such as a rebuilding layout pass) call
+            ApplyTemplate. In simplest terms, this means the method is called just before a UI element displays
+            in your app. Override this method to influence the default post-template logic of a class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemClickCommandProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemClickCommand"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemHeightProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemHeight"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.OneRowModeEnabledProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.OneRowModeEnabled"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemWidthProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemWidth"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.DesiredWidthProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.DesiredWidth"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.StretchContentForSingleRowProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.StretchContentForSingleRow"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.DesiredWidth">
+            <summary>
+            Gets or sets the desired width of each item
+            </summary>
+            <value>The width of the desired.</value>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.StretchContentForSingleRow">
+            <summary>
+            Gets or sets a value indicating whether the control should stretch the content to fill at least one row.
+            </summary>
+            <remarks>
+            If set to <c>true</c> (default) and there is only one row of items, the items will be stretched to fill the complete row.
+            If set to <c>false</c>, items will have their normal size, which means a gap can exist at the end of the row.
+            </remarks>
+            <value>A value indicating whether the control should stretch the content to fill at least one row.</value>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemClickCommand">
+            <summary>
+            Gets or sets the command to execute when an item is clicked and the IsItemClickEnabled property is true.
+            </summary>
+            <value>The item click command.</value>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemHeight">
+            <summary>
+            Gets or sets the height of each item in the grid.
+            </summary>
+            <value>The height of the item.</value>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.OneRowModeEnabled">
+            <summary>
+            Gets or sets a value indicating whether only one row should be displayed.
+            </summary>
+            <value><c>true</c> if only one row is displayed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView.ItemsPanel">
+            <summary>
+            Gets the template that defines the panel that controls the layout of items.
+            </summary>
+            <remarks>
+            This property overrides the base ItemsPanel to prevent changing it.
+            </remarks>
+            <returns>
+            An ItemsPanelTemplate that defines the panel to use for the layout of the items.
+            The default value for the ItemsControl is an ItemsPanelTemplate that specifies
+            a StackPanel.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Dock">
+            <summary>
+            Specifies the Dock position of a child element that is inside a <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Dock.Left">
+            <summary>
+            Dock left
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Dock.Top">
+            <summary>
+            Dock Top
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Dock.Right">
+            <summary>
+            Dock Right
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Dock.Bottom">
+            <summary>
+            Dock Bottom
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel">
+            <summary>
+            Defines an area where you can arrange child elements either horizontally or vertically, relative to each other.
+            </summary>
+            <summary>
+            Defines an area where you can arrange child elements either horizontally or vertically, relative to each other.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.ArrangeOverride(Windows.Foundation.Size)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.MeasureOverride(Windows.Foundation.Size)">
+            <inheritdoc />
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.DockProperty">
+            <summary>
+            Gets or sets a value that indicates the position of a child element within a parent <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.GetDock(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Gets DockProperty attached property
+            </summary>
+            <param name="obj">Target FrameworkElement</param>
+            <returns>Dock value</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.SetDock(Windows.UI.Xaml.FrameworkElement,Microsoft.Toolkit.Uwp.UI.Controls.Dock)">
+            <summary>
+            Sets DockProperty attached property
+            </summary>
+            <param name="obj">Target FrameworkElement</param>
+            <param name="value">Dock Value</param>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.LastChildFillProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.LastChildFill"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.LastChildFill">
+            <summary>
+            Gets or sets a value indicating whether the last child element within a DockPanel stretches to fill the remaining available space.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.PaddingProperty">
+            <summary>
+            Identifies the Padding dependency property.
+            </summary>
+            <returns>The identifier for the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.Padding"/> dependency property.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DockPanel.Padding">
+            <summary>
+            Gets or sets the distance between the border and its child object.
+            </summary>
+            <returns>
+            The dimensions of the space between the border and its child as a Thickness value.
+            Thickness is a structure that stores dimension values using pixel measures.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout">
+            <summary>
+            Arranges child elements into a staggered grid pattern where items are added to the column that has used least amount of space.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.DesiredColumnWidth">
+            <summary>
+            Gets or sets the desired width for each column.
+            </summary>
+            <remarks>
+            The width of columns can exceed the DesiredColumnWidth if the HorizontalAlignment is set to Stretch.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.DesiredColumnWidthProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.DesiredColumnWidth"/> dependency property.
+            </summary>
+            <returns>The identifier for the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.DesiredColumnWidth"/> dependency property.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.ColumnSpacing">
+            <summary>
+            Gets or sets the spacing between columns of items.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.ColumnSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.ColumnSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.RowSpacing">
+            <summary>
+            Gets or sets the spacing between rows of items.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.RowSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.RowSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.InitializeForContextCore(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.UninitializeForContextCore(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.OnItemsChangedCore(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext,System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.MeasureOverride(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext,Windows.Foundation.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout.ArrangeOverride(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext,Windows.Foundation.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayoutState.Clear">
+            <summary>
+            Clear everything that has been calculated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayoutState.ClearColumns">
+            <summary>
+            Clear the layout columns so they will be recalculated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayoutState.GetHeight">
+            <summary>
+            Gets the estimated height of the layout.
+            </summary>
+            <returns>The estimated height of the layout.</returns>
+            <remarks>
+            If all of the items have been calculated then the actual height will be returned.
+            If all of the items have not been calculated then an estimated height will be calculated based on the average height of the items.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel">
+            <summary>
+            Arranges child elements into a staggered grid pattern where items are added to the column that has used least amount of space.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.DesiredColumnWidth">
+            <summary>
+            Gets or sets the desired width for each column.
+            </summary>
+            <remarks>
+            The width of columns can exceed the DesiredColumnWidth if the HorizontalAlignment is set to Stretch.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.DesiredColumnWidthProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.DesiredColumnWidth"/> dependency property.
+            </summary>
+            <returns>The identifier for the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.DesiredColumnWidth"/> dependency property.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.Padding">
+            <summary>
+            Gets or sets the distance between the border and its child object.
+            </summary>
+            <returns>
+            The dimensions of the space between the border and its child as a Thickness value.
+            Thickness is a structure that stores dimension values using pixel measures.
+            </returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.PaddingProperty">
+            <summary>
+            Identifies the Padding dependency property.
+            </summary>
+            <returns>The identifier for the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.Padding"/> dependency property.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.ColumnSpacing">
+            <summary>
+            Gets or sets the spacing between columns of items.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.ColumnSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.ColumnSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.RowSpacing">
+            <summary>
+            Gets or sets the spacing between rows of items.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.RowSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.RowSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.MeasureOverride(Windows.Foundation.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel.ArrangeOverride(Windows.Foundation.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Case">
+            <summary>
+            <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Case"/> is the value container for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Content">
+            <summary>
+            Gets or sets the Content to display when this case is active.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Case.ContentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Content"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.IsDefault">
+            <summary>
+            Gets or sets a value indicating whether this is the default case to display when no values match the specified value in the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter"/>. There should only be a single default case provided. Do not set the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Value"/> property when setting <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.IsDefault"/> to <c>true</c>. Default is <c>false</c>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Case.IsDefaultProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.IsDefault"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Value">
+            <summary>
+            Gets or sets the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Value"/> that this case represents. If it matches the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.Value"/> this case's <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Content"/> will be displayed in the presenter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Case.ValueProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Value"/> property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Case.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Case"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.CaseCollection">
+            <summary>
+            An collection of <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Case"/> to help with XAML interop.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.CaseCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.CaseCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter"/> is a <see cref="T:Windows.UI.Xaml.Controls.ContentPresenter"/> which can allow a developer to mimic a <c>switch</c> statement within XAML.
+            When provided a set of <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Case"/>s and a <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.Value"/>, it will pick the matching <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Case"/> with the corresponding <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Case.Value"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.CurrentCase">
+            <summary>
+            Gets the current <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Case"/> which is being displayed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.CurrentCaseProperty">
+            <summary>
+            Indicates the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.CurrentCase"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.SwitchCases">
+            <summary>
+            Gets or sets a value representing the collection of cases to evaluate.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.SwitchCasesProperty">
+            <summary>
+            Indicates the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.SwitchCases"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.Value">
+            <summary>
+            Gets or sets a value indicating the value to compare all cases against. When this value is bound to and changes, the presenter will automatically evaluate cases and select the new appropriate content from the switch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.ValueProperty">
+            <summary>
+            Indicates the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.Value"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.TargetType">
+            <summary>
+            Gets or sets a value indicating which type to first cast and compare provided values against.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.TargetTypeProperty">
+            <summary>
+            Indicates the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.TargetType"/> property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.CompareValues(System.Object,System.Object)">
+            <summary>
+            Compares two values using the TargetType.
+            </summary>
+            <param name="compare">Our main value in our SwitchPresenter.</param>
+            <param name="value">The value from the case to compare to.</param>
+            <returns>true if the two values are equal</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.SwitchPresenter.ConvertValue(System.Type,System.Object)">
+            <summary>
+            Helper method to convert a value from a source type to a target type.
+            </summary>
+            <param name="targetType">The target type</param>
+            <param name="value">The value to convert</param>
+            <returns>The converted value</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder">
+            <summary>
+            Referencable class object we can use to have a reference shared between
+            our <see cref="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.MeasureOverride(Windows.Foundation.Size)"/> and
+            <see cref="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.GetFreeSpot(Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder,System.Int32,System.Boolean)"/> iterator.
+            This is used so we can better isolate our logic and make it easier to test.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.spotsTaken">
+            <summary>
+            The <see cref="T:System.Collections.BitArray"/> instance used to efficiently track empty spots.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder"/> class.
+            </summary>
+            <param name="rows">The number of rows to track.</param>
+            <param name="columns">The number of columns to track.</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.Height">
+            <summary>
+            Gets the height of the grid to monitor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.Width">
+            <summary>
+            Gets the width of the grid to monitor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets or sets the value of a specified grid cell.
+            </summary>
+            <param name="i">The vertical offset.</param>
+            <param name="j">The horizontal offset.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.Fill(System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Fills the specified area in the current grid with a given value.
+            If invalid coordinates are given, they will simply be ignored and no exception will be thrown.
+            </summary>
+            <param name="value">The value to fill the target area with.</param>
+            <param name="row">The row to start on (inclusive, 0-based index).</param>
+            <param name="column">The column to start on (inclusive, 0-based index).</param>
+            <param name="width">The positive width of area to fill.</param>
+            <param name="height">The positive height of area to fill.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder.Reset">
+            <summary>
+            Resets the current reference holder.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid">
+            <summary>
+            The UniformGrid control presents information within a Grid with even spacing.
+            </summary>
+            <summary>
+            The UniformGrid control presents information within a Grid with even spacing.
+            </summary>
+            <summary>
+            The UniformGrid spaces items evenly.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid._spotref">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TakenSpotsReferenceHolder"/> instance in use, if any.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.MeasureOverride(Windows.Foundation.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.ArrangeOverride(Windows.Foundation.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.AutoLayoutProperty">
+            <summary>
+            Determines if this element in the grid participates in the auto-layout algorithm.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.SetAutoLayout(Windows.UI.Xaml.FrameworkElement,System.Nullable{System.Boolean})">
+            <summary>
+            Sets the AutoLayout Attached Property Value. Used internally to track items which need to be arranged vs. fixed in place.
+            Though it its required to use this property to force an element to the 0, 0 position.
+            </summary>
+            <param name="element"><see cref="T:Windows.UI.Xaml.FrameworkElement"/></param>
+            <param name="value">A true value indicates this item should be automatically arranged.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.GetAutoLayout(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Gets the AutoLayout Attached Property Value. Used internally to track items which need to be arranged vs. fixed in place.
+            </summary>
+            <param name="element"><see cref="T:Windows.UI.Xaml.FrameworkElement"/></param>
+            <returns>A true value indicates this item should be automatically arranged.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.SetAutoLayout(Windows.UI.Xaml.Controls.ColumnDefinition,System.Nullable{System.Boolean})">
+            <summary>
+            Sets the AutoLayout Attached Property Value. Used internally to track items which need to be arranged vs. fixed in place.
+            </summary>
+            <param name="element"><see cref="T:Windows.UI.Xaml.Controls.ColumnDefinition"/></param>
+            <param name="value">A true value indicates this item should be automatically arranged.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.GetAutoLayout(Windows.UI.Xaml.Controls.ColumnDefinition)">
+            <summary>
+            Gets the AutoLayout Attached Property Value. Used internally to track items which need to be arranged vs. fixed in place.
+            </summary>
+            <param name="element"><see cref="T:Windows.UI.Xaml.Controls.ColumnDefinition"/></param>
+            <returns>A true value indicates this item should be automatically arranged.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.SetAutoLayout(Windows.UI.Xaml.Controls.RowDefinition,System.Nullable{System.Boolean})">
+            <summary>
+            Sets the AutoLayout Attached Property Value. Used internally to track items which need to be arranged vs. fixed in place.
+            </summary>
+            <param name="element"><see cref="T:Windows.UI.Xaml.Controls.RowDefinition"/></param>
+            <param name="value">A true value indicates this item should be automatically arranged.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.GetAutoLayout(Windows.UI.Xaml.Controls.RowDefinition)">
+            <summary>
+            Gets the AutoLayout Attached Property Value. Used internally to track items which need to be arranged vs. fixed in place.
+            </summary>
+            <param name="element"><see cref="T:Windows.UI.Xaml.Controls.RowDefinition"/></param>
+            <returns>A true value indicates this item should be automatically arranged.</returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.ColumnsProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Columns"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.FirstColumnProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.FirstColumn"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Orientation"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.RowsProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Rows"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Columns">
+            <summary>
+            Gets or sets the number of columns in the UniformGrid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.FirstColumn">
+            <summary>
+            Gets or sets the starting column offset for the first row of the UniformGrid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Orientation">
+            <summary>
+            Gets or sets the orientation of the grid. When <see cref="F:Windows.UI.Xaml.Controls.Orientation.Vertical"/>,
+            will transpose the layout of automatically arranged items such that they start from
+            top to bottom then based on <see cref="T:Windows.UI.Xaml.FlowDirection"/>.
+            Defaults to <see cref="F:Windows.UI.Xaml.Controls.Orientation.Horizontal"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.UniformGrid.Rows">
+            <summary>
+            Gets or sets the number of rows in the UniformGrid.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout">
+            <summary>
+            Arranges elements by wrapping them to fit the available space.
+            When <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> is set to Orientation.Horizontal, element are arranged in rows until the available width is reached and then to a new row.
+            When <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> is set to Orientation.Vertical, element are arranged in columns until the available height is reached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.HorizontalSpacing">
+            <summary>
+            Gets or sets a uniform Horizontal distance (in pixels) between items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> is set to Horizontal,
+            or between columns of items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> is set to Vertical.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.HorizontalSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.HorizontalSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.VerticalSpacing">
+            <summary>
+            Gets or sets a uniform Vertical distance (in pixels) between items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> is set to Vertical,
+            or between rows of items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> is set to Horizontal.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.VerticalSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.VerticalSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation">
+            <summary>
+            Gets or sets the orientation of the WrapLayout.
+            Horizontal means that child controls will be added horizontally until the width of the panel is reached, then a new row is added to add new child controls.
+            Vertical means that children will be added vertically until the height of the panel is reached, then a new column is added.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.Orientation"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.InitializeForContextCore(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.UninitializeForContextCore(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.OnItemsChangedCore(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext,System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.MeasureOverride(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext,Windows.Foundation.Size)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout.ArrangeOverride(Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext,Windows.Foundation.Size)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.StretchChild">
+            <summary>
+            Options for how to calculate the layout of <see cref="T:Windows.UI.Xaml.Controls.WrapGrid"/> items.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StretchChild.None">
+            <summary>
+            Don't apply any additional stretching logic
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StretchChild.Last">
+            <summary>
+            Make the last child stretch to fill the available space
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel">
+            <summary>
+            WrapPanel is a panel that position child control vertically or horizontally based on the orientation and when max width / max height is reached a new row (in case of horizontal) or column (in case of vertical) is created to fit new controls.
+            </summary>
+            <summary>
+            WrapPanel is a panel that position child control vertically or horizontally based on the orientation and when max width/ max height is received a new row(in case of horizontal) or column (in case of vertical) is created to fit new controls.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.HorizontalSpacing">
+            <summary>
+            Gets or sets a uniform Horizontal distance (in pixels) between items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Orientation"/> is set to Horizontal,
+            or between columns of items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Orientation"/> is set to Vertical.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.HorizontalSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.HorizontalSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.VerticalSpacing">
+            <summary>
+            Gets or sets a uniform Vertical distance (in pixels) between items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Orientation"/> is set to Vertical,
+            or between rows of items when <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Orientation"/> is set to Horizontal.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.VerticalSpacingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.VerticalSpacing"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Orientation">
+            <summary>
+            Gets or sets the orientation of the WrapPanel.
+            Horizontal means that child controls will be added horizontally until the width of the panel is reached, then a new row is added to add new child controls.
+            Vertical means that children will be added vertically until the height of the panel is reached, then a new column is added.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Orientation"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Padding">
+            <summary>
+            Gets or sets the distance between the border and its child object.
+            </summary>
+            <returns>
+            The dimensions of the space between the border and its child as a Thickness value.
+            Thickness is a structure that stores dimension values using pixel measures.
+            </returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.PaddingProperty">
+            <summary>
+            Identifies the Padding dependency property.
+            </summary>
+            <returns>The identifier for the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.Padding"/> dependency property.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.StretchChild">
+            <summary>
+            Gets or sets a value indicating how to arrange child items
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.StretchChildProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.StretchChild"/> dependency property.
+            </summary>
+            <returns>The identifier for the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.StretchChild"/> dependency property.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.MeasureOverride(Windows.Foundation.Size)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel.ArrangeOverride(Windows.Foundation.Size)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

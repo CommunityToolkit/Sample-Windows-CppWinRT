@@ -1,0 +1,2495 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit.Uwp.UI.Controls.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview">
+            <summary>
+            Camera Control to preview video. Can subscribe to video frames, software bitmap when they arrive.
+            </summary>
+            <summary>
+            Camera Control to preview video. Can subscribe to video frames, software bitmap when they arrive.
+            </summary>
+            <summary>
+            Camera Control to preview video. Can subscribe to video frames, software bitmap when they arrive.
+            </summary>
+            <summary>
+            Camera Control to preview video. Can subscribe to video frames, software bitmap when they arrive.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.Preview_MediaPlayerElementControl">
+            <summary>
+            Key for the MediaPlayerElement Control inside the Camera Preview Control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.Preview_FrameSourceGroupButton">
+            <summary>
+            Key for the Frame Source Group Toggle Button Control inside the Camera Preview Control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.CameraHelper">
+            <summary>
+            Gets Camera Helper
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.StartAsync">
+            <summary>
+            Initialize control with a default CameraHelper instance for video preview and frame capture.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.StartAsync(Microsoft.Toolkit.Uwp.Helpers.CameraHelper)">
+            <summary>
+            Initialize control with a CameraHelper instance for video preview and frame capture.
+            </summary>
+            <param name="cameraHelper"><see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.CameraHelper"/></param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.Stop">
+            <summary>
+            Stops preview.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.PreviewFailed">
+            <summary>
+            Event raised when camera preview fails.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.IsFrameSourceGroupButtonVisibleProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.IsFrameSourceGroupButtonVisible"/>.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.CameraPreview.IsFrameSourceGroupButtonVisible">
+            <summary>
+            Gets or sets a value indicating whether Frame Source Group Button is visible or not
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.PreviewFailedEventArgs">
+            <summary>
+            PreviewFailed Event Args
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.PreviewFailedEventArgs.Error">
+            <summary>
+            Gets error information about failure
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ControlHelpers">
+            <summary>
+            Internal class used to provide helpers for controls
+            </summary>
+            <summary>
+            Internal class used to provide helpers for controls
+            </summary>
+            <summary>
+            Internal class used to provide helpers for controls
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ControlHelpers.GetVisual(Windows.UI.Xaml.UIElement)">
+            <summary>
+            Get the visual associated with an UIElement
+            </summary>
+            <param name="element">Source UIElement</param>
+            <returns>ContainerVisual associated with the element</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ControlHelpers.Mod(System.Int32,System.Int32)">
+            <summary>
+            Gets the positive modulo of an integer
+            </summary>
+            <param name="value">Value to use</param>
+            <param name="module">Module to use</param>
+            <returns>Positive modulo</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ControlHelpers.IncMod(System.Int32,System.Int32)">
+            <summary>
+            Gets modulo of value + 1
+            </summary>
+            <param name="value">Value to use</param>
+            <param name="module">Module to use</param>
+            <returns>Modulo of value + 1</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ControlHelpers.DecMod(System.Int32,System.Int32)">
+            <summary>
+            Gets modulo of value - 1
+            </summary>
+            <param name="value">Value to use</param>
+            <param name="module">Module to use</param>
+            <returns>Modulo of value - 1</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ControlHelpers.Mod(System.Double,System.Double)">
+            <summary>
+            Gets the positive modulo of a double
+            </summary>
+            <param name="value">Value to use</param>
+            <param name="module">Module to use</param>
+            <returns>Positive modulo</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel"/> control allows the creation of a DropShadow for any Xaml FrameworkElement in markup
+            making it easier to add shadows to Xaml without having to directly drop down to Windows.UI.Composition APIs.
+            </summary>
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel"/> control allows the creation of a DropShadow for any Xaml FrameworkElement in markup
+            making it easier to add shadows to Xaml without having to directly drop down to Windows.UI.Composition APIs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OnApplyTemplate">
+            <summary>
+            Update the visual state of the control when its template is changed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OnContentChanged(System.Object,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.BlurRadiusProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.BlurRadius"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.ColorProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.Color"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetXProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetX"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetYProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetY"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetZProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetZ"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.ShadowOpacityProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.ShadowOpacity"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.IsMaskedProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.IsMasked"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.DropShadow">
+            <summary>
+            Gets DropShadow. Exposes the underlying composition object to allow custom Windows.UI.Composition animations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.Mask">
+            <summary>
+            Gets or sets the mask of the underlying <see cref="T:Windows.UI.Composition.DropShadow"/>.
+            Allows for a custom <see cref="T:Windows.UI.Composition.CompositionBrush"/> to be set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.BlurRadius">
+            <summary>
+            Gets or sets the blur radius of the drop shadow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.Color">
+            <summary>
+            Gets or sets the color of the drop shadow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetX">
+            <summary>
+            Gets or sets the x offset of the drop shadow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetY">
+            <summary>
+            Gets or sets the y offset of the drop shadow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.OffsetZ">
+            <summary>
+            Gets or sets the z offset of the drop shadow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.ShadowOpacity">
+            <summary>
+            Gets or sets the opacity of the drop shadow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel.IsMasked">
+            <summary>
+            Gets or sets a value indicating whether the panel uses an alpha mask to create a more precise shadow vs. a quicker rectangle shape.
+            </summary>
+            <remarks>
+            Turn this off to lose fidelity and gain performance of the panel.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx">
+            <summary>
+            The ImageEx control extends the default Image platform control improving the performance and responsiveness of your Apps.
+            Source images are downloaded asynchronously showing a load indicator while in progress.
+            Once downloaded, the source image is stored in the App local cache to preserve resources and load time next time the image needs to be displayed.
+            </summary>
+            <summary>
+            The ImageEx control extends the default Image platform control improving the performance and responsiveness of your Apps.
+            Source images are downloaded asynchronously showing a load indicator while in progress.
+            Once downloaded, the source image is stored in the App local cache to preserve resources and load time next time the image needs to be displayed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx"/> class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx.NineGridProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx.NineGrid"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx.NineGrid">
+            <summary>
+            Gets or sets the nine-grid used by the image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx.GetAlphaMask">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx.GetAsCastingSource">
+            <summary>
+            Returns the image as a <see cref="T:Windows.Media.Casting.CastingSource"/>.
+            </summary>
+            <returns>The image as a <see cref="T:Windows.Media.Casting.CastingSource"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase">
+            <summary>
+            Base Code for ImageEx
+            </summary>
+            <summary>
+            Base Code for ImageEx
+            </summary>
+            <summary>
+            Base code for ImageEx
+            </summary>
+            <summary>
+            Base code for ImageEx
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PartImage">
+            <summary>
+            Image name in template
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.CommonGroup">
+            <summary>
+            VisualStates name in template
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.LoadingState">
+            <summary>
+            Loading state name in template
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.LoadedState">
+            <summary>
+            Loaded state name in template
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.UnloadedState">
+            <summary>
+            Unloaded state name in template
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.FailedState">
+            <summary>
+            Failed name in template
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Image">
+            <summary>
+            Gets the backing image object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.AttachImageOpened(Windows.UI.Xaml.RoutedEventHandler)">
+            <summary>
+            Attach image opened event handler
+            </summary>
+            <param name="handler">Routed Event Handler</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.RemoveImageOpened(Windows.UI.Xaml.RoutedEventHandler)">
+            <summary>
+            Remove image opened handler
+            </summary>
+            <param name="handler">RoutedEventHandler</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.AttachImageFailed(Windows.UI.Xaml.ExceptionRoutedEventHandler)">
+            <summary>
+            Attach image failed event handler
+            </summary>
+            <param name="handler">Exception Routed Event Handler</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.RemoveImageFailed(Windows.UI.Xaml.ExceptionRoutedEventHandler)">
+            <summary>
+            Remove Image Failed handler
+            </summary>
+            <param name="handler">Exception Routed Event Handler</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.OnApplyTemplate">
+            <summary>
+            Update the visual state of the control when its template is changed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.OnImageOpened(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Underlying <see cref="E:Windows.UI.Xaml.Controls.Image.ImageOpened"/> event handler.
+            </summary>
+            <param name="sender">Image</param>
+            <param name="e">Event Arguments</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.OnImageFailed(System.Object,Windows.UI.Xaml.ExceptionRoutedEventArgs)">
+            <summary>
+            Underlying <see cref="E:Windows.UI.Xaml.Controls.Image.ImageFailed"/> event handler.
+            </summary>
+            <param name="sender">Image</param>
+            <param name="e">Event Arguments</param>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.StretchProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Stretch"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelHeightProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelHeight"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelTypeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelType"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelWidthProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelWidth"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.IsCacheEnabledProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.IsCacheEnabled"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.EnableLazyLoadingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.EnableLazyLoading"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.LazyLoadingThresholdProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.LazyLoadingThreshold"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.GetAlphaMask">
+            <summary>
+            Returns a mask that represents the alpha channel of an image as a <see cref="T:Windows.UI.Composition.CompositionBrush"/>
+            </summary>
+            <returns><see cref="T:Windows.UI.Composition.CompositionBrush"/></returns>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.ImageExFailed">
+            <summary>
+            Event raised if the image failed loading.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.ImageExOpened">
+            <summary>
+            Event raised when the image is successfully loaded and opened.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.ImageExInitialized">
+            <summary>
+            Event raised when the control is initialized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.IsInitialized">
+            <summary>
+            Gets a value indicating whether control has been initialized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelHeight">
+            <summary>
+            Gets or sets DecodePixelHeight for underlying bitmap
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelType">
+            <summary>
+            Gets or sets DecodePixelType for underlying bitmap
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.DecodePixelWidth">
+            <summary>
+            Gets or sets DecodePixelWidth for underlying bitmap
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Stretch">
+            <summary>
+            Gets or sets the stretch behavior of the image
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.IsCacheEnabled">
+            <summary>
+            Gets or sets a value indicating whether gets or sets cache state
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.EnableLazyLoading">
+            <summary>
+            Gets or sets a value indicating whether gets or sets is lazy loading enable. (17763 or higher supported)
+            </summary>
+            <remarks>Windows 10 build 17763 or higher required.</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.LazyLoadingThreshold">
+            <summary>
+            Gets or sets a value indicating the threshold for triggering lazy loading.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PlaceholderSourceProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PlaceholderSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PlaceholderStretchProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PlaceholderStretch"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PlaceholderSource">
+            <summary>
+            Gets or sets the placeholder source.
+            </summary>
+            <value>
+            The placeholder source.
+            </value>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.OnPlaceholderSourceChanged(Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Invoked when Placeholder source has changed
+            </summary>
+            <param name="e">Event args</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.PlaceholderStretch">
+            <summary>
+            Gets or sets the placeholder stretch.
+            </summary>
+            <value>
+            The placeholder stretch.
+            </value>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.SourceProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Source"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Source">
+            <summary>
+            Gets or sets the source used by the image
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.AttachSource(Windows.UI.Xaml.Media.ImageSource)">
+            <summary>
+            Method to call to assign an <see cref="T:Windows.UI.Xaml.Media.ImageSource"/> value to the underlying <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Image"/> powering <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase"/>.
+            </summary>
+            <param name="source"><see cref="T:Windows.UI.Xaml.Media.ImageSource"/> to assign to the image.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.ProvideCachedResourceAsync(System.Uri,System.Threading.CancellationToken)">
+             <summary>
+             This method is provided in case a developer would like their own custom caching strategy for <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase"/>.
+             By default it uses the built-in UWP cache provided by <see cref="T:Windows.UI.Xaml.Media.Imaging.BitmapImage"/> and
+             the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExBase.Image"/> control itself. This method should return an <see cref="T:Windows.UI.Xaml.Media.ImageSource"/>
+             value of the image specified by the provided uri parameter.
+             A <see cref="T:System.Threading.CancellationToken"/> is provided in case the current request is invalidated
+             (e.g. the container is recycled before the original image is loaded).
+             The Toolkit also has an image cache helper which can be used as well:
+             <see cref="M:Microsoft.Toolkit.Uwp.UI.CacheBase`1.GetFromCacheAsync(System.Uri,System.Boolean,System.Threading.CancellationToken,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.Object}})"/> in <see cref="T:Microsoft.Toolkit.Uwp.UI.ImageCache"/>.
+             </summary>
+             <example>
+             <code>
+                 var propValues = new List&lt;KeyValuePair&lt;string, object>>();
+            
+                 if (DecodePixelHeight > 0)
+                 {
+                     propValues.Add(new KeyValuePair&lt;string, object>(nameof(DecodePixelHeight), DecodePixelHeight));
+                 }
+                 if (DecodePixelWidth > 0)
+                 {
+                     propValues.Add(new KeyValuePair&lt;string, object>(nameof(DecodePixelWidth), DecodePixelWidth));
+                 }
+                 if (propValues.Count > 0)
+                 {
+                     propValues.Add(new KeyValuePair&lt;string, object>(nameof(DecodePixelType), DecodePixelType));
+                 }
+            
+                 // A token is provided here as well to cancel the request to the cache,
+                 // if a new image is requested.
+                 return await ImageCache.Instance.GetFromCacheAsync(imageUri, true, token, propValues);
+             </code>
+             </example>
+             <param name="imageUri"><see cref="T:System.Uri"/> of the image to load from the cache.</param>
+             <param name="token">A <see cref="T:System.Threading.CancellationToken"/> which is used to signal when the current request is outdated.</param>
+             <returns><see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExFailedEventHandler">
+            <summary>
+            A delegate for <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx"/> failed.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExFailedEventArgs">
+            <summary>
+            Provides data for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx"/> ImageFailed event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageExFailedEventArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExFailedEventArgs"/> class.
+            </summary>
+            <param name="errorException">exception that caused the error condition</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExFailedEventArgs.ErrorException">
+            <summary>
+            Gets the exception that caused the error condition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageExFailedEventArgs.ErrorMessage">
+            <summary>
+            Gets the reason for the error condition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExOpenedEventHandler">
+            <summary>
+            A delegate for <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx"/> opened.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageExOpenedEventArgs">
+            <summary>
+            Provides data for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageEx"/> ImageOpened event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification">
+            <summary>
+            In App Notification defines a control to show local notification in the app.
+            </summary>
+            <summary>
+            In App Notification defines a control to show local notification in the app.
+            </summary>
+            <summary>
+            In App Notification defines a control to show local notification in the app.
+            </summary>
+            <summary>
+            In App Notification defines a control to show local notification in the app.
+            </summary>
+            <summary>
+            In App Notification defines a control to show local notification in the app.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.GetKeyFrameDuration(Windows.UI.Xaml.DependencyObject)">
+            <summary>
+            Gets the value of the KeyFrameDuration attached Property
+            </summary>
+            <param name="obj">the KeyFrame where the duration is set</param>
+            <returns>Value of KeyFrameDuration</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.SetKeyFrameDuration(Windows.UI.Xaml.DependencyObject,System.TimeSpan)">
+            <summary>
+            Sets the value of the KeyFrameDuration attached property
+            </summary>
+            <param name="obj">The KeyFrame object where the property is attached</param>
+            <param name="value">The TimeSpan value to be set as duration</param>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.KeyFrameDurationProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for KeyFrameDuration. This enables animation, styling, binding, etc
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.GroupContent">
+            <summary>
+            Key of the VisualStateGroup that show/dismiss content
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.StateContentVisible">
+            <summary>
+            Key of the VisualState when content is showed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.StateContentCollapsed">
+            <summary>
+            Key of the VisualState when content is dismissed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.DismissButtonPart">
+            <summary>
+            Key of the UI Element that dismiss the control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.ContentPresenterPart">
+            <summary>
+            Key of the UI Element that will display the notification content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.OnApplyTemplate">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Show(System.Int32)">
+            <summary>
+            Show notification using the current content.
+            </summary>
+            <param name="duration">Displayed duration of the notification in ms (less or equal 0 means infinite duration)</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Show(System.String,System.Int32)">
+            <summary>
+            Show notification using text as the content of the notification
+            </summary>
+            <param name="text">Text used as the content of the notification</param>
+            <param name="duration">Displayed duration of the notification in ms (less or equal 0 means infinite duration)</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Show(Windows.UI.Xaml.UIElement,System.Int32)">
+            <summary>
+            Show notification using UIElement as the content of the notification
+            </summary>
+            <param name="element">UIElement used as the content of the notification</param>
+            <param name="duration">Displayed duration of the notification in ms (less or equal 0 means infinite duration)</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Show(Windows.UI.Xaml.DataTemplate,System.Int32)">
+            <summary>
+            Show notification using <paramref name="dataTemplate"/> as the content of the notification
+            </summary>
+            <param name="dataTemplate">DataTemplate used as the content of the notification</param>
+            <param name="duration">Displayed duration of the notification in ms (less or equal 0 means infinite duration)</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Show(System.Object,System.Int32)">
+            <summary>
+            Show notification using <paramref name="content"/> as the content of the notification.
+            The <paramref name="content"/> will be displayed with the current <see cref="P:Windows.UI.Xaml.Controls.ContentControl.ContentTemplate"/>.
+            </summary>
+            <param name="content">The content of the notification</param>
+            <param name="duration">Displayed duration of the notification in ms (less or equal 0 means infinite duration)</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Dismiss(System.Boolean)">
+            <summary>
+            Dismiss the notification
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Dismiss(Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind,System.Boolean)">
+            <summary>
+            Dismiss the notification
+            </summary>
+            <param name="dismissKind">Kind of action that triggered dismiss event</param>
+            <param name="dismissAll">Indicates if one or all notifications should be dismissed.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.UpdateContent(Microsoft.Toolkit.Uwp.UI.Controls.NotificationOptions)">
+            <summary>
+            Update the Content of the notification
+            </summary>
+            <param name="notificationOptions">Information about the notification to display</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Show(Microsoft.Toolkit.Uwp.UI.Controls.NotificationOptions)">
+            <summary>
+            Handle the display of the notification based on the current StackMode
+            </summary>
+            <param name="notificationOptions">Information about the notification to display</param>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Opening">
+            <summary>
+            Event raised when the notification is opening
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Opened">
+            <summary>
+            Event raised when the notification is opened
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Closing">
+            <summary>
+            Event raised when the notification is closing
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.Closed">
+            <summary>
+            Event raised when the notification is closed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.ShowDismissButtonProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.ShowDismissButton"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.AnimationDurationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.AnimationDuration"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.VerticalOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.VerticalOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.HorizontalOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.HorizontalOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.StackModeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.StackMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.ShowDismissButton">
+            <summary>
+            Gets or sets a value indicating whether to show the Dismiss button of the control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.AnimationDuration">
+            <summary>
+            Gets or sets a value indicating the duration of the popup animation (in milliseconds).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.VerticalOffset">
+            <summary>
+            Gets or sets a value indicating the vertical offset of the popup animation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.HorizontalOffset">
+            <summary>
+            Gets or sets a value indicating the horizontal offset of the popup animation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification.StackMode">
+            <summary>
+            Gets or sets a value indicating the stack mode of the notifications.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosedEventHandler">
+            <summary>
+            A delegate for <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> dismissing.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosedEventArgs">
+            <summary>
+            Provides data for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> Dismissing event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosedEventArgs.#ctor(Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosedEventArgs"/> class.
+            </summary>
+            <param name="dismissKind">Dismiss kind that triggered the closing event</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosedEventArgs.DismissKind">
+            <summary>
+            Gets the kind of action for the closing event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventHandler">
+            <summary>
+            A delegate for <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> dismissing.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs">
+            <summary>
+            Provides data for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> Dismissing event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs.#ctor(Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs"/> class.
+            </summary>
+            <param name="dismissKind">Dismiss kind that triggered the closing event</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs.DismissKind">
+            <summary>
+            Gets the kind of action for the closing event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the notification should be closed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind">
+            <summary>
+            Enumeration to describe how an InAppNotification was dismissed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind.Programmatic">
+            <summary>
+            When the system dismissed the notification.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind.User">
+            <summary>
+            When user explicitly dismissed the notification.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationDismissKind.Timeout">
+            <summary>
+            When the system dismissed the notification after timeout.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationOpeningEventHandler">
+            <summary>
+            A delegate for <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> opening.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationOpeningEventArgs">
+            <summary>
+            Provides data for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification"/> Dismissing event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationOpeningEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationOpeningEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationOpeningEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the notification should be opened.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.NotificationOptions">
+            <summary>
+            Base class that contains options of notification
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.NotificationOptions.Duration">
+            <summary>
+            Gets or sets duration of the stacked notification
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.NotificationOptions.Content">
+            <summary>
+            Gets or sets Content of the notification
+            Could be either a <see cref="T:System.String"/> or a <see cref="T:Windows.UI.Xaml.UIElement"/> or a <see cref="T:Windows.UI.Xaml.DataTemplate"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.StackMode">
+            <summary>
+            The Stack mode of an in-app notification.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StackMode.Replace">
+            <summary>
+            Each notification will replace the previous one
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StackMode.StackInFront">
+            <summary>
+            Opening a notification will display it immediately, remaining notifications will appear when a notification is dismissed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.StackMode.QueueBehind">
+            <summary>
+            Dismissing a notification will show the next one in the queue
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper">
+            <inheritdoc />
+            <summary>A wrapper class for <see cref="P:Windows.UI.Xaml.Controls.TextBlock.Inlines">TextBlock.Inlines</see> to
+            hack the problem that <see cref="T:Windows.UI.Xaml.Documents.InlineCollection" />.
+            has no accessible constructor</summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Add(Windows.UI.Xaml.Documents.Inline)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Contains(Windows.UI.Xaml.Documents.Inline)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.CopyTo(Windows.UI.Xaml.Documents.Inline[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.IndexOf(Windows.UI.Xaml.Documents.Inline)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Insert(System.Int32,Windows.UI.Xaml.Documents.Inline)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.Remove(Windows.UI.Xaml.Documents.Inline)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.RemoveAt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.AddItemsToTextBlock(Windows.UI.Xaml.Controls.TextBlock)">
+            <summary>
+            Sets the items of this collection as <see cref="P:Windows.UI.Xaml.Controls.TextBlock.Inlines"/> to <paramref name="textBlock"/>.
+            </summary>
+            <param name="textBlock">The textBlock where the items are added.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.InlineCollectionWrapper.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Loading">
+            <summary>
+            Loading control allows to show an loading animation with some xaml in it.
+            </summary>
+            <summary>
+            Loading control allows to show an loading animation with some xaml in it.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Loading.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Loading"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Loading.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Loading.IsLoadingProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Loading.IsLoading"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Loading.IsLoading">
+            <summary>
+            Gets or sets a value indicating whether the control is in the loading state.
+            </summary>
+            <remarks>Set this to true to show the Loading control, false to hide the control.</remarks>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Menu">
+            <summary>
+            Menu Control defines a menu of choices for users to invoke.
+            </summary>
+            <summary>
+            Menu Control defines a menu of choices for users to invoke.
+            </summary>
+            <summary>
+            Menu Control defines a menu of choices for users to invoke.
+            </summary>
+            <summary>
+            Menu Control defines a menu of choices for users to invoke.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Menu"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.Orientation">
+            <summary>
+            Gets or sets the orientation of the Menu, Horizontal or vertical means that child controls will be added horizontally
+            until the width of the panel can't fit more control then a new row is added to fit new horizontal added child controls,
+            vertical means that child will be added vertically until the height of the panel is received then a new column is added
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Menu.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.Orientation"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Menu.MenuFlyoutStyleProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.MenuFlyoutStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.MenuFlyoutStyle">
+            <summary>
+            Gets or sets the menu style for MenuItem
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Menu.TooltipStyleProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.TooltipStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.TooltipStyle">
+            <summary>
+            Gets or sets the tooltip styles for menu
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Menu.TooltipPlacementProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.TooltipPlacement"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.TooltipPlacement">
+            <summary>
+            Gets or sets the tooltip placement on menu
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.SelectedMenuItem">
+            <summary>
+            Gets the current selected menu header item
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.IsOpened">
+            <summary>
+            Gets a value indicating whether the menu is opened or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.IsInTransitionState">
+            <summary>
+            Gets or sets a value indicating whether the menu is in transition state between menu closing state and menu opened state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.OnApplyTemplate">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.IsItemItsOwnContainerOverride(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.GetContainerForItemOverride">
+            <inheritdoc />
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Menu.InputGestureTextProperty">
+            <summary>
+            Sets the text describing an input gesture that will call the command tied to the specified item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.GetInputGestureText(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Gets InputGestureText attached property
+            </summary>
+            <param name="obj">Target MenuFlyoutItem</param>
+            <returns>Input gesture text</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.SetInputGestureText(Windows.UI.Xaml.FrameworkElement,System.String)">
+            <summary>
+            Sets InputGestureText attached property
+            </summary>
+            <param name="obj">Target MenuFlyoutItem</param>
+            <param name="value">Input gesture text</param>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Menu.AllowTooltipProperty">
+            <summary>
+            Gets or sets a value indicating whether to allow tooltip on alt or not
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.GetAllowTooltip(Microsoft.Toolkit.Uwp.UI.Controls.Menu)">
+            <summary>
+            Gets AllowTooltip attached property
+            </summary>
+            <param name="obj">Target Menu</param>
+            <returns>AllowTooltip</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Menu.SetAllowTooltip(Microsoft.Toolkit.Uwp.UI.Controls.Menu,System.Boolean)">
+            <summary>
+            Sets AllowTooltip attached property
+            </summary>
+            <param name="obj">Target Menu</param>
+            <param name="value">AllowTooltip</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Menu.CurrentFlyoutPlacement">
+            <summary>
+            Gets or sets the current flyout placement, internal because the child menu item needs it to respect the menu direction of sub-menus
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem">
+            <summary>
+            Menu Item is the items main container for Class Menu control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.Header">
+            <summary>
+            Gets or sets the header of each control.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.HeaderProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.Header"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.HeaderTemplate">
+            <summary>
+            Gets or sets the template used to display the content of the control's header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.HeaderTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.HeaderTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.IsOpened">
+            <summary>
+            Gets a value indicating whether the menu is opened or not
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.HideMenu">
+            <summary>
+            This method is used to hide the menu for current item
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.OnApplyTemplate">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.ShowMenu">
+            <summary>
+            This method is used to show the menu for current item
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.OnTapped(Windows.UI.Xaml.Input.TappedRoutedEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MenuItem.OnGotFocus(Windows.UI.Xaml.RoutedEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar">
+            <summary>
+            An alternative implementation of a progress bar.
+            Progression is represented by a loop filling up in a clockwise fashion.
+            Like the traditional progress bar, it inherits from RangeBase, so Minimum, Maximum and Value properties work the same way.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.OnMinimumChanged(System.Double,System.Double)">
+            <summary>
+            Called when the Minimum property changes.
+            </summary>
+            <param name="oldMinimum">Old value of the Minimum property.</param>
+            <param name="newMinimum">New value of the Minimum property.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.OnMaximumChanged(System.Double,System.Double)">
+            <summary>
+            Called when the Maximum property changes.
+            </summary>
+            <param name="oldMaximum">Old value of the Maximum property.</param>
+            <param name="newMaximum">New value of the Maximum property.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.OnValueChanged(System.Double,System.Double)">
+            <summary>
+            Called when the Value property changes.
+            </summary>
+            <param name="oldValue">Old value of the Value property.</param>
+            <param name="newValue">New value of the Value property.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.OnApplyTemplate">
+            <summary>
+            Update the visual state of the control when its template is changed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.Thickness">
+            <summary>
+            Gets or sets the thickness of the circular outline and segment
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.ThicknessProperty">
+            <summary>
+            Identifies the Thickness dependency property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.Outline">
+            <summary>
+            Gets or sets the color of the circular outline on which the segment is drawn
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.OutlineProperty">
+            <summary>
+            Identifies the Outline dependency property
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar"/> class.
+            Create a default circular progress bar
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile">
+            <summary>
+            An items control that presents enumerable content similar to the live tiles on the
+            start menu.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ExtraRandomDurationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ExtraRandomDuration"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotationDelayProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotationDelay"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ItemsSourceProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ItemsSource"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ItemTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ItemTemplate"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirectionProperty">
+            <summary>
+            Identifies the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirection"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.CurrentItemProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.CurrentItem"/> property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.Timer_Tick(System.Object,System.Object)">
+            <summary>
+            Triggered when it's time to flip to the next live tile.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.GetTileDuration">
+            <summary>
+            A method to get duration for tile.
+            </summary>
+            <returns>Returns the duration for the tile based on RotationDelay.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ItemsSource">
+            <summary>
+            Gets or sets the ItemsSource
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.CurrentItem">
+            <summary>
+            Gets or sets the currently selected visible item
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ItemTemplate">
+            <summary>
+            Gets or sets the item template
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.Direction">
+            <summary>
+            Gets or sets the direction the tile slides in.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotationDelay">
+            <summary>
+            Gets or sets the duration for tile rotation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirection">
+            <summary>
+            Tile Slide Direction
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirection.Up">
+            <summary>Up</summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirection.Left">
+            <summary>Left</summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirection.Down">
+            <summary>Down</summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotateDirection.Right">
+            <summary>Right</summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.ExtraRandomDuration">
+            <summary>
+            Gets or sets the extra randomized duration to be added to the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotationDelay"/> property.
+            A value between zero and this value *in seconds* will be added to the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile.RotationDelay"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar">
+            <summary>
+            A basic TabbedCommandBar control that houses <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/>s
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar._previousSelectedItem">
+            <summary>
+            The last selected <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem">
+            <summary>
+            A <see cref="T:Windows.UI.Xaml.Controls.CommandBar"/> to be displayed in a <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/> class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.HeaderProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.Header"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.Header">
+            <summary>
+            Gets or sets the text or <see cref="T:Windows.UI.Xaml.UIElement"/> to display in the header of this TabbedCommandBar tab.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.IsContextualProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.IsContextual"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.IsContextual">
+            <summary>
+            Gets or sets a value indicating whether this tab is contextual.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.OverflowButtonAlignmentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.OverflowButtonAlignment"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.OverflowButtonAlignment">
+            <summary>
+            Gets or sets a value indicating the alignment of the command overflow button.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.CommandAlignmentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.CommandAlignment"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.CommandAlignment">
+            <summary>
+            Gets or sets a value indicating the alignment of the commands in the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItemTemplateSelector">
+            <summary>
+            <see cref="T:Windows.UI.Xaml.Controls.DataTemplateSelector"/> used by <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBar"/> for determining the style of normal vs. contextual <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/>s.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItemTemplateSelector.Normal">
+            <summary>
+            Gets or sets the <see cref="T:Windows.UI.Xaml.Style"/> of a normal <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItemTemplateSelector.Contextual">
+            <summary>
+            Gets or sets the <see cref="T:Windows.UI.Xaml.Style"/> of a contextual <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItem"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItemTemplateSelector.SelectTemplateCore(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TabbedCommandBarItemTemplateSelector.SelectTemplateCore(System.Object,Windows.UI.Xaml.DependencyObject)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.EditorChangedArgs">
+            <summary>
+            Arguments relating to a change of Editor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.EditorChangedArgs.Old">
+            <summary>
+            Gets the old Instance that is being Replaced
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.EditorChangedArgs.New">
+            <summary>
+            Gets the new Instance that is being Set
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions">
+            <summary>
+            The Actions taken when a button is pressed. Required for Common Button actions (Unless you override both Activation and ShiftActivation)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions.FormatBold(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Applies Bold
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions.FormatItalics(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Applies Italics
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions.FormatStrikethrough(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Applies Strikethrough
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions.FormatLink(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton,System.String,System.String,System.String)">
+            <summary>
+            Applies Link
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions.FormatList(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Applies List
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.ButtonActions.FormatOrderedList(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Applies Ordered List
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter">
+            <summary>
+            Manipulates Selected Text into an applied format according to default buttons.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.Model_EditorChanged(System.Object,Microsoft.Toolkit.Uwp.UI.Controls.EditorChangedArgs)">
+            <summary>
+            Called when text editor has changed
+            </summary>
+            <param name="sender"><see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar"/> invoking the event</param>
+            <param name="e"><see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.EditorChangedArgs"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.Editor_SelectionChanged(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Called for Changes to Selection (Requires unhook if switching RichEditBox).
+            </summary>
+            <param name="sender">Editor</param>
+            <param name="e">Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.EnsureAtStartOfCurrentLine">
+            <summary>
+            Decrements the selected position until it is at the start of the current line.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.EnsureAtNewLine">
+            <summary>
+            Determines the Position of the Selector, if not at a New Line, it will move the Selector to a new line.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.GetLines">
+            <summary>
+            Gets an array of the Lines of Text in the Editor.
+            </summary>
+            <returns>Text Array</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.GetLine(System.Int32)">
+            <summary>
+            Gets the line from the index provided (Skips last Carriage Return)
+            </summary>
+            <returns>Last line text</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.GetLastLine">
+            <summary>
+            Gets the last line (Skips last Carriage Return)
+            </summary>
+            <returns>Last line text</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.OnSelectionChanged">
+            <summary>
+            Called after the Selected Text changes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.Model">
+            <summary>
+            Gets the source Toolbar
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.UnsetModel(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar)">
+            <summary>
+            This method is called to unset event handlers that might have been registers by <see cref="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.SetModel(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar)"/>
+            </summary>
+            <param name="model">The old <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar"/> the Formatter was associated with</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.SetModel(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar)">
+            <summary>
+            Sets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar"/> where the Formatter is used
+            </summary>
+            <param name="model">The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar"/> where Formatter is used</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.ButtonActions">
+            <summary>
+            Gets or sets a map of the Actions taken when a button is pressed. Required for Common Button actions (Unless you override both Activation and ShiftActivation)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.DefaultButtons">
+            <summary>
+            Gets the default list of buttons
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.Text">
+            <summary>
+            Gets the formatted version of the Editor's Text
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.NewLineChars">
+            <summary>
+            Gets the Characters used to indicate a New Line
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.Selected">
+            <summary>
+            Gets the current Editor Selection
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Formatter.Return">
+            <summary>
+            Shortcut to Carriage Return
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions">
+            <summary>
+            Class defining the RichText formatter actions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.#ctor(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions"/> class.
+            </summary>
+            <param name="formatter">The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatBold(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatItalics(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatStrikethrough(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatLink(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton,System.String,System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatList(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatOrderedList(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.FormatUnderline(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Formats the selection as underline
+            </summary>
+            <param name="button">The button invoking the action</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextButtonActions.Formatter">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter">
+            <summary>
+            Rudimentary showcase of RichText and Toggleable Toolbar Buttons.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter.SetModel(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter.OnSelectionChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter.Text">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter.DefaultButtons">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter.SelectionFormat">
+            <summary>
+            Gets or sets format used for formatting selection in editor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter.NewLineChars">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs">
+            <summary>
+            Arguments relating to a CTRL Key Shortcut being activated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs.#ctor(Windows.System.VirtualKey,System.Boolean,Windows.UI.Xaml.Input.KeyRoutedEventArgs)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs"/> class.
+            </summary>
+            <param name="key"><see cref="T:Windows.System.VirtualKey"/> pressed</param>
+            <param name="shiftKeyHeld">value indicating if the SHIFT key was pressed</param>
+            <param name="args"><see cref="T:Windows.UI.Xaml.Input.KeyRoutedEventArgs"/> from the original event handler</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs.Key">
+            <summary>
+            Gets key pressed with CTRL
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs.OriginalArgs">
+            <summary>
+            Gets the Original KeyDown arguments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs.ShiftKeyHeld">
+            <summary>
+            Gets a value indicating whether Shift was held down too
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether the Key been Handled
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.List">
+            <summary>
+            Creates a List Icon
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.List.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.List"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.NumberedList">
+            <summary>
+            Creates a Numbered List Icon
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.NumberedList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.NumberedList"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.Symbol">
+            <summary>
+            Common implementation for a symbol icon
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.Symbol.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.Symbol.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols.Symbol"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar">
+            <summary>
+            Toolbar for Editing Text attached to a RichEditBox
+            </summary>
+            <summary>
+            Toolbar for Editing Text attached to a RichEditBox
+            </summary>
+            <summary>
+            Toolbar for Editing Text attached to a RichEditBox
+            </summary>
+            <summary>
+            Toolbar for Editing Text attached to a RichEditBox
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnEditorChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Attaches/Detaches the Key events for Shortcuts
+            </summary>
+            <param name="obj">TextToolbar</param>
+            <param name="args">Property Changed Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnFormatterChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Rebuilds the Toolbar if the formatter changes during operation
+            </summary>
+            <param name="obj">TextToolbar</param>
+            <param name="args">Property Changed Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnButtonMapChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Resets removed entries, and Reloads the Toolbar Entries
+            </summary>
+            <param name="obj">TextToolbar</param>
+            <param name="args">Property Changed Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnDefaultButtonModificationsChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Resets removed entries, and Reloads the Toolbar Entries
+            </summary>
+            <param name="obj">TextToolbar</param>
+            <param name="args">Property Changed Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnButtonMapModified(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Adds new Buttons, or Removes removed buttons, if modified during operation.
+            </summary>
+            <param name="sender">ButtonMap</param>
+            <param name="e">Collection Changed Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.OnDefaultButtonModificationListChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Default Button Modification Instances
+            </summary>
+            <param name="sender">Source</param>
+            <param name="e">Property Changed Args</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.ToolbarItemPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Ensures that the Toolbar updates the position of a Toolbar Item if it's position changes.
+            </summary>
+            <param name="sender">Toolbar Button</param>
+            <param name="e">Property Changed Event</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.Editor_KeyDown(System.Object,Windows.UI.Xaml.Input.KeyRoutedEventArgs)">
+            <summary>
+            Checks if a Shortcut Combination is pressed, by going through the list of attached buttons.
+            </summary>
+            <param name="sender">RichEditBox</param>
+            <param name="e">Key args</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.ControlKeyDown">
+            <summary>
+            Gets a value indicating whether Control is pressed down
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.MenuKeyDown">
+            <summary>
+            Gets a value indicating whether Menu is pressed down
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.ShiftKeyDown">
+            <summary>
+            Gets a value indicating whether Shift is pressed down
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.ShortcutRequested">
+            <summary>
+            Fired when a CTRL + "Letter" combination is used inside the Editor.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.EditorChanged">
+            <summary>
+            Fired when the RichEditBox Instance Changes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.GetDefaultButton(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType)">
+            <summary>
+            Gets the Button Instance from the DefaultButton
+            </summary>
+            <param name="button">Default Button</param>
+            <returns>Default Toolbar Button</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.BuildBar">
+            <summary>
+            Attaches all of the Default Buttons, Removing any that are to be removed, and inserting Custom buttons.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.AttachButtonMap(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonMap,Windows.UI.Xaml.Controls.CommandBar)">
+            <summary>
+            Adds all of the ToolbarButtons to the Root Control
+            </summary>
+            <param name="map">Collection of Buttons to add</param>
+            <param name="root">Root Control</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.AddToolbarItem(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem,Windows.UI.Xaml.Controls.CommandBar)">
+            <summary>
+            Adds an element to the Toolbar
+            </summary>
+            <param name="item">Item to add to the Toolbar</param>
+            <param name="root">Root Control</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.MoveToolbarItem(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem,Windows.UI.Xaml.Controls.CommandBar)">
+            <summary>
+            Moves a Toolbar element to a new location on the Toolbar
+            </summary>
+            <param name="item">Item to Move</param>
+            <param name="root">Root Control</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.RemoveToolbarItem(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem)">
+            <summary>
+            Removes an Element from the Toolbar
+            </summary>
+            <param name="item">Item to Remove</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.FindBestAlternativeKey(Windows.System.VirtualKey)">
+            <summary>
+            Returns the best Match for some keys that don't have names.
+            </summary>
+            <returns>Best Match</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.IsKeyActive(Windows.UI.Core.CoreVirtualKeyStates)">
+            <summary>
+            Checks if the key is pressed down.
+            </summary>
+            <param name="state">Key State</param>
+            <returns>Is Key pressed down?</returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.EditorProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.Editor"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.FormatterProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.Formatter"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.DefaultButtonsProperty">
+            <summary>
+            Identifies the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.CustomButtonsProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.CustomButtons"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.DefaultButtonModificationsProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.ButtonModifications"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.UseURICheckerProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.UseURIChecker"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.Editor">
+            <summary>
+            Gets or sets the RichEditBox to Attach to, this is required for any formatting to work.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.Formatter">
+            <summary>
+            Gets or sets the formatter instance which is used to format the text, using the buttons and shortcuts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.DefaultButtons">
+            <summary>
+            Gets the default buttons for this format.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.CustomButtons">
+            <summary>
+            Gets or sets a list of buttons to add on top of the Default Button set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.ButtonModifications">
+            <summary>
+            Gets or sets a list of Default buttons to Modify.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.LastKeyPress">
+            <summary>
+            Gets the last key pressed using the Editor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar.UseURIChecker">
+            <summary>
+            Gets or sets a value indicating whether to enable use of URI Checker for Link Creator. This allows you to verify Absolute URIs, before creating the Link.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonMap">
+            <summary>
+            ObservableCollection of <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType">
+            <summary>
+            Specifies a Default ButtonType to Manipulate
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Bold">
+            <summary>
+            Bold Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Italics">
+            <summary>
+            Italics Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Strikethrough">
+            <summary>
+            Strikethrough Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Code">
+            <summary>
+            Code button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Quote">
+            <summary>
+            Quote Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Link">
+            <summary>
+            Link Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.List">
+            <summary>
+            List Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.OrderedList">
+            <summary>
+            Ordered List Button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType.Headers">
+            <summary>
+            Header Selector
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons">
+            <summary>
+            Provides access to Generic Buttons that activate Formatter Methods
+            </summary>
+            <summary>
+            Provides access to Generic Buttons that activate Formatter Methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.#ctor(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons"/> class. <para/>
+            Requires a TextToolbar Instance />.
+            </summary>
+            <param name="model">TextToolbar Instance</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.Bold">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> for Bold
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.Italics">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> for Italics
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.Strikethrough">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> for Strikethrough
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.Link">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> for Link
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.List">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> for List
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.OrderedList">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> for OrderedList
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.Common.CommonButtons.OpenLinkCreator(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Opens a <see cref="T:Windows.UI.Xaml.Controls.ContentDialog"/> for the user to enter a URL
+            </summary>
+            <param name="button">The <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> invoked</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton">
+            <summary>
+            Specifies a DefaultButton, modifies a Button Instance
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.IsVisibleProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.IsVisible"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.OfType(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ButtonType)">
+            <summary>
+            Specifies the Type of DefaultButton in order to remove it.
+            </summary>
+            <param name="type">Type of Default Button</param>
+            <returns>Removal Object</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.IsVisible">
+            <summary>
+            Gets or sets a value indicating whether the Toolbar Item is Visible
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.Type">
+            <summary>
+            Gets or sets the type of Default Button to remove.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton.Button">
+            <summary>
+            Gets or sets the instance of button that is removed, in order to preserve any modifications when re-attaching to the Toolbar.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButtonModificationList">
+            <summary>
+            ObservableCollection of <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.DefaultButton"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem">
+            <summary>
+            Interface that defines the position of an item in a <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem.Position">
+            <summary>
+            Gets or sets index of this Element
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton">
+            <summary>
+            An Interactive button in the TextToolbar, to perform a formatting task.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ToolTipProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ToolTip"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutKeyProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutKey"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.IsToggledProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.IsToggled"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutFancyNameProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutFancyName"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutRequested(Microsoft.Toolkit.Uwp.UI.Controls.ShortcutKeyRequestArgs@)">
+            <summary>
+            Determines if this is the Correct shortcut, if not it continues along the bar to find a matching shortcut.
+            </summary>
+            <param name="args">Shortcut Request Args</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.Activation">
+            <summary>
+            Gets or sets the designated formatting task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShiftActivation">
+            <summary>
+            Gets or sets the designated formatting task when pressing shift at the same time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ToolTip">
+            <summary>
+            Gets or sets the Tooltip message, explaining what the button does.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutKey">
+            <summary>
+            Gets or sets a key to activate this button from the keyboard.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutFancyName">
+            <summary>
+            Gets or sets the name that represents the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.ShortcutKey"/> as the Keyboard Character
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.Position">
+            <summary>
+            Gets or sets the position in the Toolbar to place this Button.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.IsToggled">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton"/> is Toggled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.Model">
+            <summary>
+            Gets or sets the Attached TextToolbar
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton.PropertyChanged">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarSeparator">
+            <summary>
+            Separates a collection of <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.IToolbarItem"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarSeparator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarSeparator"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarSeparator.Position">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageAlignment">
+            <summary>
+            Image alignment
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageAlignment.None">
+            <summary>
+            No alignment needed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageAlignment.Left">
+            <summary>
+            Align to Left when the property ScrollOrientation is Horizontal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageAlignment.Right">
+            <summary>
+            Align to Right when the property ScrollOrientation is Horizontal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageAlignment.Top">
+            <summary>
+            Align to Top when the property ScrollOrientation is Vertical
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ImageAlignment.Bottom">
+            <summary>
+            Align to Bottom when the property ScrollOrientation is Vertical
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ScrollOrientation">
+            <summary>
+            Orientation of the scroll
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ScrollOrientation.Horizontal">
+            <summary>
+            Scroll only Horizontally (and optimize the number of image used)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ScrollOrientation.Vertical">
+            <summary>
+            Scroll only Vertically (and optimize the number of image used)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.ScrollOrientation.Both">
+            <summary>
+            Scroll both Horizontally and vertically
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TileControl">
+            <summary>
+            A ContentControl that show an image repeated many times.
+            The control can be synchronized with a ScrollViewer and animated easily.
+            </summary>
+            <summary>
+            A ContentControl that show an image repeated many times.
+            The control can be synchronized with a ScrollViewer and animated easily.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl._flag">
+            <summary>
+            a flag to lock shared method
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl._scrollViewer">
+            <summary>
+            A ScrollViewer used for synchronized the move of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TileControl"/>
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageLoaded">
+            <summary>
+            The image loaded event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TileControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.InitializeScrollViewerContainer(Windows.UI.Xaml.FrameworkElement,Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Initialize the new ScrollViewer
+            </summary>
+            <param name="oldScrollViewerContainer">the old ScrollViewerContainer</param>
+            <param name="newScrollViewerContainer">the new ScrollViewerContainer</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollViewerContainer_Loaded(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            ScrollViewer is loaded
+            </summary>
+            <param name="sender">a ScrollViewerContainer</param>
+            <param name="e">arguments</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AttachScrollViewer(Windows.UI.Xaml.DependencyObject)">
+            <summary>
+            Attach a ScrollViewer to the TileControl (parallax effect)
+            </summary>
+            <param name="scrollViewerContainer">A ScrollViewer or a container of a ScrollViewer</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.LoadImageBrushAsync(System.Uri)">
+            <summary>
+            Load the image and transform it to a composition brush or a XAML brush (depends of the UIStrategy)
+            </summary>
+            <param name="uri">the uri of the image to load</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OnApplyTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.RootElement_SizeChanged(System.Object,Windows.UI.Xaml.SizeChangedEventArgs)">
+            <summary>
+            the size of the rootElement is changed
+            </summary>
+            <param name="sender">sender</param>
+            <param name="e">arguments</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.RefreshContainerTileLocked">
+            <summary>
+            Refresh the ContainerVisual or ContainerElement with a lock
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.RefreshContainerTile">
+            <summary>
+            Refresh the ContainerVisual or ContainerElement
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.RefreshContainerTile(System.Double,System.Double,System.Double,System.Double,Microsoft.Toolkit.Uwp.UI.Controls.ScrollOrientation)">
+            <summary>
+            Refresh the ContainerVisual or ContainerElement
+            </summary>
+            <returns>Return true when the container is refreshed</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.CreateModuloExpression(Windows.UI.Xaml.Controls.ScrollViewer)">
+            <summary>
+            Create the modulo expression and apply it to the ContainerVisual element
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.CreateModuloExpression(Windows.UI.Xaml.Controls.ScrollViewer,System.Double,System.Double,Microsoft.Toolkit.Uwp.UI.Controls.ScrollOrientation)">
+            <summary>
+            Creation of an expression to manage modulo (positive and negative value)
+            </summary>
+            <param name="scrollViewer">The ScrollViewer to synchronized. A null value is valid</param>
+            <param name="imageWidth">Width of the image</param>
+            <param name="imageHeight">Height of the image</param>
+            <param name="scrollOrientation">The ScrollOrientation</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.RefreshMove(System.Double,System.Double)">
+            <summary>
+            Refresh the move
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.GetOffsetModulo(System.Double,System.Double)">
+            <summary>
+            Get the offset after a modulo with the image size
+            </summary>
+            <param name="offset">the offset of the tile</param>
+            <param name="size">the size of the image</param>
+            <returns>the offset between 0 and the size of the image</returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollViewerContainerProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollViewerContainer"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageAlignmentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageAlignment"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageSourceProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageSource"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollOrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollOrientation"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OffsetXProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OffsetX"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OffsetYProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OffsetY"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ParallaxSpeedRatioProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ParallaxSpeedRatio"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.IsAnimatedProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.IsAnimated"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationStepXProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationStepX"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationStepYProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationStepY"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationDurationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationDuration"/> property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollViewerContainer">
+            <summary>
+            Gets or sets a ScrollViewer or a frameworkElement containing a ScrollViewer.
+            The tile control is synchronized with the offset of the scrollViewer
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageAlignment">
+            <summary>
+            Gets or sets the alignment of the tile when the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollOrientation"/> is set to Vertical or Horizontal.
+            Valid values are Left or Right for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollOrientation"/> set to Horizontal and Top or Bottom for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollOrientation"/> set to Vertical.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ImageSource">
+            <summary>
+            Gets or sets the uri of the image to load
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollOrientation">
+            <summary>
+            Gets or sets the scroll orientation of the tile.
+            Less images are drawn when you choose the Horizontal or Vertical value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OffsetX">
+            <summary>
+            Gets or sets an X offset of the image
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.OffsetY">
+            <summary>
+            Gets or sets an Y offset of the image
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ParallaxSpeedRatio">
+            <summary>
+            Gets or sets the speed ratio of the parallax effect with the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.ScrollViewerContainer"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.IsAnimated">
+            <summary>
+            Gets or sets a value indicating whether the tile is animated or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationStepX">
+            <summary>
+            Gets or sets the animation step of the OffsetX
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationStepY">
+            <summary>
+            Gets or sets the animation step of the OffsetY
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TileControl.AnimationDuration">
+            <summary>
+            Gets or sets a duration for the animation of the tile
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Core.Microsoft_Toolkit_Uwp_UI_Controls_Core_XamlTypeInfo.XamlMetaDataProvider">
+            <summary>
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Core.Microsoft_Toolkit_Uwp_UI_Controls_Core_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Core.Microsoft_Toolkit_Uwp_UI_Controls_Core_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Core.Microsoft_Toolkit_Uwp_UI_Controls_Core_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+    </members>
+</doc>

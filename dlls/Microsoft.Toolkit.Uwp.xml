@@ -1,0 +1,2365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit.Uwp</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions">
+            <summary>
+            Helpers for executing code in a <see cref="T:Windows.System.DispatcherQueue" />.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions.IsHasThreadAccessPropertyAvailable">
+            <summary>
+            Indicates whether or not <see cref="P:Windows.System.DispatcherQueue.HasThreadAccess" /> is available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions.EnqueueAsync(Windows.System.DispatcherQueue,System.Action,Windows.System.DispatcherQueuePriority)">
+            <summary>
+            Invokes a given function on the target <see cref="T:Windows.System.DispatcherQueue" /> and returns a
+            <see cref="T:System.Threading.Tasks.Task" /> that completes when the invocation of the function is completed.
+            </summary>
+            <param name="dispatcher">The target <see cref="T:Windows.System.DispatcherQueue" /> to invoke the code on.</param>
+            <param name="function">The <see cref="T:System.Action" /> to invoke.</param>
+            <param name="priority">The priority level for the function to invoke.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that completes when the invocation of <paramref name="function" /> is over.</returns>
+            <remarks>If the current thread has access to <paramref name="dispatcher" />, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions.EnqueueAsync``1(Windows.System.DispatcherQueue,System.Func{``0},Windows.System.DispatcherQueuePriority)">
+            <summary>
+            Invokes a given function on the target <see cref="T:Windows.System.DispatcherQueue" /> and returns a
+            <see cref="T:System.Threading.Tasks.Task`1" /> that completes when the invocation of the function is completed.
+            </summary>
+            <typeparam name="T">The return type of <paramref name="function" /> to relay through the returned <see cref="T:System.Threading.Tasks.Task`1" />.</typeparam>
+            <param name="dispatcher">The target <see cref="T:Windows.System.DispatcherQueue" /> to invoke the code on.</param>
+            <param name="function">The <see cref="T:System.Func`1" /> to invoke.</param>
+            <param name="priority">The priority level for the function to invoke.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that completes when the invocation of <paramref name="function" /> is over.</returns>
+            <remarks>If the current thread has access to <paramref name="dispatcher" />, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions.EnqueueAsync(Windows.System.DispatcherQueue,System.Func{System.Threading.Tasks.Task},Windows.System.DispatcherQueuePriority)">
+            <summary>
+            Invokes a given function on the target <see cref="T:Windows.System.DispatcherQueue" /> and returns a
+            <see cref="T:System.Threading.Tasks.Task" /> that acts as a proxy for the one returned by the given function.
+            </summary>
+            <param name="dispatcher">The target <see cref="T:Windows.System.DispatcherQueue" /> to invoke the code on.</param>
+            <param name="function">The <see cref="T:System.Func`1" /> to invoke.</param>
+            <param name="priority">The priority level for the function to invoke.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that acts as a proxy for the one returned by <paramref name="function" />.</returns>
+            <remarks>If the current thread has access to <paramref name="dispatcher" />, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions.EnqueueAsync``1(Windows.System.DispatcherQueue,System.Func{System.Threading.Tasks.Task{``0}},Windows.System.DispatcherQueuePriority)">
+            <summary>
+            Invokes a given function on the target <see cref="T:Windows.System.DispatcherQueue" /> and returns a
+            <see cref="T:System.Threading.Tasks.Task`1" /> that acts as a proxy for the one returned by the given function.
+            </summary>
+            <typeparam name="T">The return type of <paramref name="function" /> to relay through the returned <see cref="T:System.Threading.Tasks.Task`1" />.</typeparam>
+            <param name="dispatcher">The target <see cref="T:Windows.System.DispatcherQueue" /> to invoke the code on.</param>
+            <param name="function">The <see cref="T:System.Func`1" /> to invoke.</param>
+            <param name="priority">The priority level for the function to invoke.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that relays the one returned by <paramref name="function" />.</returns>
+            <remarks>If the current thread has access to <paramref name="dispatcher" />, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.DispatcherQueueExtensions.GetEnqueueException(System.String)">
+            <summary>
+            Creates an <see cref="T:System.InvalidOperationException" /> to return when an enqueue operation fails.
+            </summary>
+            <param name="message">The message of the exception.</param>
+            <returns>An <see cref="T:System.InvalidOperationException" /> with a specified message.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.DispatcherQueueTimerExtensions">
+            <summary>
+            Set of extension methods for using <see cref="T:Windows.System.DispatcherQueueTimer" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.DispatcherQueueTimerExtensions.Debounce(Windows.System.DispatcherQueueTimer,System.Action,System.TimeSpan,System.Boolean)">
+            <summary>
+                <para>Used to debounce (rate-limit) an event.  The action will be postponed and executed after the interval has elapsed.  At the end of the interval, the function will be called with the arguments that were passed most recently to the debounced function.</para>
+                <para>Use this method to control the timer instead of calling Start/Interval/Stop manually.</para>
+                <para>A scheduled debounce can still be stopped by calling the stop method on the timer instance.</para>
+                <para>Each timer can only have one debounced function limited at a time.</para>
+            </summary>
+            <param name="timer">Timer instance, only one debounced function can be used per timer.</param>
+            <param name="action">Action to execute at the end of the interval.</param>
+            <param name="interval">Interval to wait before executing the action.</param>
+            <param name="immediate">Determines if the action execute on the leading edge instead of trailing edge.</param>
+            <example>
+                <code>
+             private DispatcherQueueTimer _typeTimer = new DispatcherQueueTimer();
+            
+             _typeTimer.Debounce(async () =&gt;
+                 {
+                     // Only executes this code after 0.3 seconds have elapsed since last trigger.
+                 }, TimeSpan.FromSeconds(0.3));
+             </code>
+            </example>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.PointExtensions">
+            <summary>
+            Extensions for the <see cref="T:Windows.Foundation.Point" /> type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.PointExtensions.ToRect(Windows.Foundation.Point,System.Double,System.Double)">
+            <summary>
+            Creates a new <see cref="T:Windows.Foundation.Rect" /> of the specified size, starting at a given point.
+            </summary>
+            <param name="point">The input <see cref="T:Windows.Foundation.Point" /> value to convert.</param>
+            <param name="width">The width of the rectangle.</param>
+            <param name="height">The height of the rectangle.</param>
+            <returns>A <see cref="T:Windows.Foundation.Rect" /> value of the specified size, starting at the given point.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.PointExtensions.ToRect(Windows.Foundation.Point,Windows.Foundation.Point)">
+            <summary>
+            Creates a new <see cref="T:Windows.Foundation.Rect" /> ending at the specified point, starting at the given coordinates.
+            </summary>
+            <param name="point">The input <see cref="T:Windows.Foundation.Point" /> value to convert.</param>
+            <param name="end">The ending position for the rectangle.</param>
+            <returns>A <see cref="T:Windows.Foundation.Rect" /> value between the two specified points.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.PointExtensions.ToRect(Windows.Foundation.Point,Windows.Foundation.Size)">
+            <summary>
+            Creates a new <see cref="T:Windows.Foundation.Rect" /> of the specified size, starting at the given coordinates.
+            </summary>
+            <param name="point">The input <see cref="T:Windows.Foundation.Point" /> value to convert.</param>
+            <param name="size">The size of the rectangle to create.</param>
+            <returns>A <see cref="T:Windows.Foundation.Rect" /> value of the specified size, starting at the given coordinates.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.RectExtensions">
+            <summary>
+            Extensions for the <see cref="T:Windows.Foundation.Rect" /> type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.RectExtensions.IntersectsWith(Windows.Foundation.Rect,Windows.Foundation.Rect)">
+            <summary>
+            Determines if a rectangle intersects with another rectangle.
+            </summary>
+            <param name="rect1">The first rectangle to test.</param>
+            <param name="rect2">The second rectangle to test.</param>
+            <returns>This method returns <see langword="true" /> if there is any intersection, otherwise <see langword="false" />.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.SizeExtensions">
+            <summary>
+            Extensions for the <see cref="T:Windows.Foundation.Size" /> type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.SizeExtensions.ToRect(Windows.Foundation.Size)">
+            <summary>
+            Creates a new <see cref="T:Windows.Foundation.Rect" /> of the specified size, starting at the origin.
+            </summary>
+            <param name="size">The input <see cref="T:Windows.Foundation.Size" /> value to convert.</param>
+            <returns>A <see cref="T:Windows.Foundation.Rect" /> value of the specified size, starting at the origin.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.SizeExtensions.ToRect(Windows.Foundation.Size,System.Double,System.Double)">
+            <summary>
+            Creates a new <see cref="T:Windows.Foundation.Rect" /> of the specified size, starting at the given coordinates.
+            </summary>
+            <param name="size">The input <see cref="T:Windows.Foundation.Size" /> value to convert.</param>
+            <param name="x">The horizontal offset.</param>
+            <param name="y">The vertical offset.</param>
+            <returns>A <see cref="T:Windows.Foundation.Rect" /> value of the specified size, starting at the given coordinates.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.SizeExtensions.ToRect(Windows.Foundation.Size,Windows.Foundation.Point)">
+            <summary>
+            Creates a new <see cref="T:Windows.Foundation.Rect" /> of the specified size, starting at the given position.
+            </summary>
+            <param name="size">The input <see cref="T:Windows.Foundation.Size" /> value to convert.</param>
+            <param name="point">The starting position to use.</param>
+            <returns>A <see cref="T:Windows.Foundation.Rect" /> value of the specified size, starting at the given position.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.StringExtensions">
+            <summary>
+            UWP specific helpers for working with strings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.StringExtensions.GetViewLocalized(System.String,Windows.UI.UIContext)">
+            <summary>
+            Retrieves the provided resource for the current view context.
+            </summary>
+            <param name="resourceKey">Resource key to retrieve.</param>
+            <param name="uiContext">
+                <see cref="T:Windows.UI.UIContext" /> to be used to get the <paramref name="resourceKey" /> from.
+            You can retrieve this from a <see cref="P:Windows.UI.Xaml.UIElement.UIContext" />, <see cref="P:Windows.UI.Xaml.XamlRoot.UIContext" /> (XamlIslands), or <see cref="P:Windows.UI.Xaml.Window.UIContext" />.</param>
+            <returns>string value for given resource or empty string if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.StringExtensions.GetLocalized(System.String,Windows.UI.UIContext)">
+            <summary>
+            Retrieves the provided resource for the given key for use independent of the UI thread.
+            </summary>
+            <param name="resourceKey">Resource key to retrieve.</param>
+            <param name="uiContext">
+                <see cref="T:Windows.UI.UIContext" /> to be used to get the <paramref name="resourceKey" /> from.
+            You can retrieve this from a <see cref="P:Windows.UI.Xaml.UIElement.UIContext" />, <see cref="P:Windows.UI.Xaml.XamlRoot.UIContext" /> (XamlIslands), or <see cref="P:Windows.UI.Xaml.Window.UIContext" />.</param>
+            <returns>string value for given resource or empty string if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.StringExtensions.GetLocalized(System.String,System.String)">
+            <summary>
+            Retrieves the provided resource for the given key for use independent of the UI thread. First looks up resource at the application level, before falling back to provided resourcePath. This allows for easily overridable resources within a library.
+            </summary>
+            <param name="resourceKey">Resource key to retrieve.</param>
+            <param name="resourcePath">Resource path to fall back to in case resourceKey not found in app resources.</param>
+            <returns>string value for given resource or empty string if not found.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Deferred.TypedEventHandlerExtensions">
+            <summary>
+            Extensions to <see cref="T:Windows.Foundation.TypedEventHandler`2" /> for Deferred Events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Deferred.TypedEventHandlerExtensions.InvokeAsync``2(Windows.Foundation.TypedEventHandler{``0,``1},``0,``1)">
+            <summary>
+            Use to invoke an async <see cref="T:Windows.Foundation.TypedEventHandler`2" /> using <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" />.
+            </summary>
+            <typeparam name="S">Type of sender.</typeparam>
+            <typeparam name="R">
+                <see cref="T:System.EventArgs" /> type.</typeparam>
+            <param name="eventHandler">
+                <see cref="T:Windows.Foundation.TypedEventHandler`2" /> to be invoked.</param>
+            <param name="sender">Sender of the event.</param>
+            <param name="eventArgs">
+                <see cref="T:System.EventArgs" /> instance.</param>
+            <returns>
+                <see cref="T:System.Threading.Tasks.Task" /> to wait on deferred event handler.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Deferred.TypedEventHandlerExtensions.InvokeAsync``2(Windows.Foundation.TypedEventHandler{``0,``1},``0,``1,System.Threading.CancellationToken)">
+            <summary>
+            Use to invoke an async <see cref="T:Windows.Foundation.TypedEventHandler`2" /> using <see cref="T:Microsoft.Toolkit.Deferred.DeferredEventArgs" /> with a <see cref="T:System.Threading.CancellationToken" />.
+            </summary>
+            <typeparam name="S">Type of sender.</typeparam>
+            <typeparam name="R">
+                <see cref="T:System.EventArgs" /> type.</typeparam>
+            <param name="eventHandler">
+                <see cref="T:Windows.Foundation.TypedEventHandler`2" /> to be invoked.</param>
+            <param name="sender">Sender of the event.</param>
+            <param name="eventArgs">
+                <see cref="T:System.EventArgs" /> instance.</param>
+            <param name="cancellationToken">
+                <see cref="T:System.Threading.CancellationToken" /> option.</param>
+            <returns>
+                <see cref="T:System.Threading.Tasks.Task" /> to wait on deferred event handler.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper">
+            <summary>
+            This class provides static helper methods for background tasks.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.IsBackgroundTaskRegistered(System.String)">
+            <summary>
+            Determines whether a background task is registered.
+            </summary>
+            <param name="backgroundTaskName">The name of the background task class</param>
+            <returns>
+                <c>true</c> if a background task was registered; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.IsBackgroundTaskRegistered(System.Type)">
+            <summary>
+            Determines whether a background task is registered.
+            </summary>
+            <param name="backgroundTaskType">The type of the background task. This class has to implement IBackgroundTask</param>
+            <returns>
+                <c>true</c> if a background task was registered; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.Register(System.String,System.String,Windows.ApplicationModel.Background.IBackgroundTrigger,System.Boolean,System.Boolean,Windows.ApplicationModel.Background.IBackgroundCondition[])">
+            <summary>
+            Registers a background task with conditions.
+            If the task is already registered, return null.
+            Or set <paramref name="forceRegister" /> to true to un-register the old one and then re-register.
+            </summary>
+            <param name="backgroundTaskName">Name of the background task class</param>
+            <param name="backgroundTaskEntryPoint">Entry point of the background task.</param>
+            <param name="trigger">Trigger that indicate when the background task should be invoked</param>
+            <param name="forceRegister">Indicate if the background task will be force installed in the case of being already registered</param>
+            <param name="enforceConditions">Indicate if the background task should quit if condition is no longer valid</param>
+            <param name="conditions">Optional conditions for the background task to run with</param>
+            <returns>Background Task that was registered with the system</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.Register(System.Type,Windows.ApplicationModel.Background.IBackgroundTrigger,System.Boolean,System.Boolean,Windows.ApplicationModel.Background.IBackgroundCondition[])">
+            <summary>
+            Registers a background task with conditions.
+            If the task is already registered and has the same trigger, returns the existing registration if it has the same trigger.
+            If the task is already registered but has different trigger, return null by default.
+            Or set <paramref name="forceRegister" /> to true to un-register the old one and then re-register.
+            </summary>
+            <param name="backgroundTaskType">The type of the background task. This class has to implement IBackgroundTask</param>
+            <param name="trigger">Trigger that indicate when the background task should be invoked</param>
+            <param name="forceRegister">Indicate if the background task will be force installed in the case of being already registered</param>
+            <param name="enforceConditions">Indicate if the background task should quit if condition is no longer valid</param>
+            <param name="conditions">Optional conditions for the background task to run with</param>
+            <returns>Background Task that was registered with the system</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.Register(System.String,Windows.ApplicationModel.Background.IBackgroundTrigger,System.Boolean,System.Boolean,Windows.ApplicationModel.Background.IBackgroundCondition[])">
+            <summary>
+            Registers under the Single Process Model. WARNING: Single Process Model only works with Windows 10 Anniversary Update (14393) and later.
+            Registers a background task with conditions.
+            If the task is already registered and has the same trigger, returns the existing registration if it has the same trigger.
+            If the task is already registered but has different trigger, return null by default.
+            Or set <paramref name="forceRegister" /> to true to un-register the old one and then re-register.
+            </summary>
+            <param name="backgroundTaskName">The name of the background task class</param>
+            <param name="trigger">Trigger that indicate when the background task should be invoked</param>
+            <param name="forceRegister">Indicate if the background task will be force installed in the case of being already registered</param>
+            <param name="enforceConditions">Indicate if the background task should quit if condition is no longer valid</param>
+            <param name="conditions">Optional conditions for the background task to run with</param>
+            <returns>Background Task that was registered with the system</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.Unregister(System.Type,System.Boolean)">
+            <summary>
+            Unregisters a background task.
+            </summary>
+            <param name="backgroundTaskType">The type of the background task</param>
+            <param name="forceExit">Force the background task to quit if it is currently running (at the time of unregistering). Default value is true.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.Unregister(System.String,System.Boolean)">
+            <summary>
+            Unregisters a background task.
+            </summary>
+            <param name="backgroundTaskName">The name of the background task class</param>
+            <param name="forceExit">Force the background task to quit if it is currently running (at the time of unregistering). Default value is true.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.Unregister(Windows.ApplicationModel.Background.IBackgroundTaskRegistration,System.Boolean)">
+            <summary>
+            Unregisters a background task.
+            </summary>
+            <param name="backgroundTask">A background task that was previously registered with the system</param>
+            <param name="forceExit">Force the background task to quit if it is currently running (at the time of unregistering). Default value is true.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.GetBackgroundTask(System.Type)">
+            <summary>
+            Returns the registered background task of the given type.
+            </summary>
+            <param name="backgroundTaskType">Type of the background task class. This class has to implement IBackgroundTask</param>
+            <returns>The registered background task if it exists; otherwise, <c>null</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BackgroundTaskHelper.GetBackgroundTask(System.String)">
+            <summary>
+            Returns the registered background task of the given type.
+            </summary>
+            <param name="backgroundTaskName">Name of the background task class</param>
+            <returns>The registered background task if it exists; otherwise, <c>null</c>.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.CameraHelper">
+            <summary>
+            Helper class for capturing frames from available camera sources.
+            Make sure you have the capability webcam enabled for your app to access the device's camera.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.GetFrameSourceGroupsAsync">
+            <summary>
+            Gets a list of <see cref="T:Windows.Media.Capture.Frames.MediaFrameSourceGroup" /> available for video preview or video record.
+            </summary>
+            <returns>A <see cref="T:Windows.Media.Capture.Frames.MediaFrameSourceGroup" /> list.</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.FrameFormatsAvailable">
+            <summary>
+            Gets a list of <see cref="T:Windows.Media.Capture.Frames.MediaFrameFormat" /> available on the source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.FrameSourceGroup">
+            <summary>
+            Gets or sets the source group for camera video preview.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.PreviewFrameSource">
+            <summary>
+            Gets the currently selected <see cref="T:Windows.Media.Capture.Frames.MediaFrameSource" /> for video preview.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.FrameArrived">
+            <summary>
+            Occurs when a new frame arrives.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.InitializeAndStartCaptureAsync">
+            <summary>
+            Initializes Camera Media Capture settings and initializes Frame Reader to capture frames in real time.
+            If no MediaFrameSourceGroup is provided, it selects the first available camera source to  use for media capture.
+            You could select a specific MediaFrameSourceGroup from the available sources using the CameraHelper FrameSourceGroups property.
+            </summary>
+            <returns>Result of the async operation.<see cref="T:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult" /></returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.CleanUpAsync">
+            <summary>
+            Clean up the Camera Helper resources
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.StopReaderAsync">
+            <summary>
+            Stops reading from the frame reader and disposes of the reader.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.Reader_FrameArrived(Windows.Media.Capture.Frames.MediaFrameReader,Windows.Media.Capture.Frames.MediaFrameArrivedEventArgs)">
+            <summary>
+            Handles the frame arrived event by converting the frame to a displayable
+            format and rendering it to the screen.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.Dispose">
+            <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult">
+            <summary>
+            Enum indicating result of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.CameraHelper" /> initialization.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.Success">
+            <summary>
+            Initialization was successful.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.CreateFrameReaderFailed">
+            <summary>
+            Initialization failed; Frame Reader Creation failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.StartFrameReaderFailed">
+            <summary>
+            Initialization failed; Unable to start Frame Reader.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.NoFrameSourceGroupAvailable">
+            <summary>
+            Initialization failed; Frame Source Group is null.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.NoFrameSourceAvailable">
+            <summary>
+            Initialization failed; Frame Source is null.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.CameraAccessDenied">
+            <summary>
+            Access to the camera is denied.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.InitializationFailed_UnknownError">
+            <summary>
+            Initialization failed due to an exception.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.CameraHelperResult.NoCompatibleFrameFormatAvailable">
+            <summary>
+            Initialization failed; No compatible frame format exposed by the frame source.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.FrameEventArgs">
+            <summary>
+            Provides data for the <see cref="E:Microsoft.Toolkit.Uwp.Helpers.CameraHelper.FrameArrived" /> event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.FrameEventArgs.VideoFrame">
+            <summary>
+            Gets the video frame.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.ColorHelper">
+            <summary>
+            This class provides static helper methods for colors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.ToColor(System.String)">
+            <summary>
+            Creates a <see cref="T:Windows.UI.Color" /> from a XAML color string.
+            Any format used in XAML should work.
+            </summary>
+            <param name="colorString">The XAML color string.</param>
+            <returns>The created <see cref="T:Windows.UI.Color" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.ToHex(Windows.UI.Color)">
+            <summary>
+            Converts a <see cref="T:Windows.UI.Color" /> to a hexadecimal string representation.
+            </summary>
+            <param name="color">The color to convert.</param>
+            <returns>The hexadecimal string representation of the color.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.ToInt(Windows.UI.Color)">
+            <summary>
+            Converts a <see cref="T:Windows.UI.Color" /> to a premultiplied Int32 - 4 byte ARGB structure.
+            </summary>
+            <param name="color">The color to convert.</param>
+            <returns>The int representation of the color.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.ToHsl(Windows.UI.Color)">
+            <summary>
+            Converts a <see cref="T:Windows.UI.Color" /> to an <see cref="T:Microsoft.Toolkit.Uwp.HslColor" />.
+            </summary>
+            <param name="color">The <see cref="T:Windows.UI.Color" /> to convert.</param>
+            <returns>The converted <see cref="T:Microsoft.Toolkit.Uwp.HslColor" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.ToHsv(Windows.UI.Color)">
+            <summary>
+            Converts a <see cref="T:Windows.UI.Color" /> to an <see cref="T:Microsoft.Toolkit.Uwp.HsvColor" />.
+            </summary>
+            <param name="color">The <see cref="T:Windows.UI.Color" /> to convert.</param>
+            <returns>The converted <see cref="T:Microsoft.Toolkit.Uwp.HsvColor" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.FromHsl(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a <see cref="T:Windows.UI.Color" /> from the specified hue, saturation, lightness, and alpha values.
+            </summary>
+            <param name="hue">0..360 range hue</param>
+            <param name="saturation">0..1 range saturation</param>
+            <param name="lightness">0..1 range lightness</param>
+            <param name="alpha">0..1 alpha</param>
+            <returns>The created <see cref="T:Windows.UI.Color" />.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ColorHelper.FromHsv(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a <see cref="T:Windows.UI.Color" /> from the specified hue, saturation, value, and alpha values.
+            </summary>
+            <param name="hue">0..360 range hue</param>
+            <param name="saturation">0..1 range saturation</param>
+            <param name="value">0..1 range value</param>
+            <param name="alpha">0..1 alpha</param>
+            <returns>The created <see cref="T:Windows.UI.Color" />.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser">
+            <summary>
+            A version of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> which generates a comma-separated-list as the value for any option that is repeated in the query string
+            </summary>
+            <example>
+            in OnLaunched of App.xaml.cs:
+            <code lang="c#">
+            if (e.PrelaunchActivated == false)
+            {
+                if (rootFrame.Content == null)
+                {
+                    var parser = CollectionFormingDeepLinkParser.Create(args);
+                    if (parser["username"] == "John Doe")
+                    {
+                        // do work here
+                    }
+                    if (parser.Root == "Signup")
+                    {
+                        var preferences = parser["pref"].Split(',');    // now a string[] of all 'pref' querystring values passed in URI
+                        rootFrame.Navigate(typeof(Signup));
+                    }
+            </code></example>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser" /> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser.#ctor(Windows.ApplicationModel.Activation.IActivatedEventArgs)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser" /> class.
+            </summary>
+            <param name="args">The <see cref="T:Windows.ApplicationModel.Activation.IActivatedEventArgs" /> instance containing the event data.</param>
+            <exception cref="T:System.ArgumentException">'args' is not a LaunchActivatedEventArgs instance</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser" /> class.
+            </summary>
+            <param name="uri">The URI.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="uri" /> is null</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser" /> class.
+            </summary>
+            <param name="uri">The URI.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="uri" /> is null, empty, or consists only of whitespace characters</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.CollectionFormingDeepLinkParser.ParseUriString(System.String)">
+            <summary>
+            Parses the URI string in to components.
+            </summary>
+            <param name="uri">The URI.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser">
+            <summary>
+            Provides assistance with parsing <see cref="T:Windows.ApplicationModel.Activation.ILaunchActivatedEventArgs" /> and its .Arguments property in to a key-value set and target path
+            </summary>
+            <example>
+            in OnLaunched of App.xaml.cs:
+            <code lang="c#">
+            if (e.PrelaunchActivated == false)
+            {
+                if (rootFrame.Content == null)
+                {
+                    var parser = DeepLinkParser.Create(args);
+                    if (parser["username"] == "John Doe")
+                    {
+                        // do work here
+                    }
+                    if (parser.Root == "Signup")
+                    {
+                        rootFrame.Navigate(typeof(Signup));
+                    }
+            </code></example>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.Create(Windows.ApplicationModel.Activation.IActivatedEventArgs)">
+            <summary>
+            Creates an instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> for the given <see cref="T:Windows.ApplicationModel.Activation.IActivatedEventArgs" /></summary>
+            <param name="args">The <see cref="T:Windows.ApplicationModel.Activation.IActivatedEventArgs" /> instance containing the launch Uri data.</param>
+            <returns>An instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /></returns>
+            <remarks>
+                <paramref name="args" /> will be cast to <see cref="T:Windows.ApplicationModel.Activation.ILaunchActivatedEventArgs" /></remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.Create(System.Uri)">
+            <summary>
+            Creates an instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> for the given <see cref="T:System.Uri" /></summary>
+            <param name="uri">The URI to parse.</param>
+            <returns>An instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /></returns>
+            <remarks>
+                <paramref name="uri" /> will be tested for null</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.Create(System.String)">
+            <summary>
+            Creates an instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> for the given <see cref="T:System.Uri" /></summary>
+            <param name="uri">The URI to parse.</param>
+            <returns>An instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /></returns>
+            <remarks>
+                <paramref name="uri" /> will be tested for null</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.ValidateSourceUri(System.String)">
+            <summary>
+            Validates the source URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns>
+                <paramref name="uri" /> as a <c>System.Uri</c> instance
+            </returns>
+            <exception cref="T:System.ArgumentNullException">thrown if <paramref name="uri" /> is null</exception>
+            <exception cref="T:System.ArgumentException">Not a valid URI format</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.#ctor(Windows.ApplicationModel.Activation.IActivatedEventArgs)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> class.
+            </summary>
+            <param name="args">The <see cref="T:Windows.ApplicationModel.Activation.IActivatedEventArgs" /> instance containing the event data.</param>
+            <exception cref="T:System.ArgumentException">'args' is not an instance of ILaunchActivatedEventArgs or IProtocolActivatedEventArgs - args</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> class.
+            </summary>
+            <param name="uri">The URI.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="uri" /> is null</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> class.
+            </summary>
+            <param name="uri">The URI.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="uri" /> is null, empty, or consists only of whitespace characters</exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.ParseUriString(System.String)">
+            <summary>
+            Parses the URI string in to components.
+            </summary>
+            <param name="uri">The URI.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.SetRoot(System.Uri)">
+            <summary>
+            Sets <see cref="P:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.Root" /> on this <see cref="T:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser" /> instance and computes the query string position
+            </summary>
+            <param name="validatedUri">The validated URI (from <see cref="M:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.ValidateSourceUri(System.String)" />).</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.DeepLinkParser.Root">
+            <summary>Gets or sets the root path of the Deep link URI</summary>
+            <example>
+            for "MainPage/Options?option1=value1"
+            Root = "MainPage/Options"
+            </example>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.QueryParameterCollection">
+            <summary>
+            Provides an enumerable way to look at query string parameters from a Uri
+            </summary>
+            <seealso cref="!:System.Collections.ObjectModel.Collection&lt;System.Collections.Generic.KeyValuePair&lt;string, string&gt;&gt;" />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.QueryParameterCollection.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.QueryParameterCollection" /> class.
+            </summary>
+            <param name="uri">The URI.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.QueryParameterCollection.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.QueryParameterCollection" /> class.
+            </summary>
+            <param name="uri">The URI.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper">
+            <summary>
+            This class provides static methods helper for executing code in UI thread of the main window.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync(System.Action,Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given function on the main view's UI thread.
+            </summary>
+            <param name="function">Synchronous function to be executed on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync``1(System.Func{``0},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given function on the main view's UI thread and returns its result.
+            </summary>
+            <typeparam name="T">Returned data type of the function.</typeparam>
+            <param name="function">Synchronous function to be executed on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync(System.Func{System.Threading.Tasks.Task},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given <see cref="T:System.Threading.Tasks.Task" />-returning function on the main view's UI thread and returns either that <see cref="T:System.Threading.Tasks.Task" />
+            or a proxy <see cref="T:System.Threading.Tasks.Task" /> that completes when the one produced by the given function completes.
+            </summary>
+            <param name="function">Asynchronous function to be executed asynchronously on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync``1(System.Func{System.Threading.Tasks.Task{``0}},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given <see cref="T:System.Threading.Tasks.Task`1" />-returning function on the main view's UI thread and returns either that <see cref="T:System.Threading.Tasks.Task`1" />
+            or a proxy <see cref="T:System.Threading.Tasks.Task`1" /> that completes when the one produced by the given function completes.
+            </summary>
+            <typeparam name="T">Returned data type of the function.</typeparam>
+            <param name="function">Asynchronous function to be executed asynchronously on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> for the operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync(Windows.ApplicationModel.Core.CoreApplicationView,System.Action,Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given function on a given view's UI thread.
+            </summary>
+            <param name="viewToExecuteOn">View for the <paramref name="function" /> to be executed on.</param>
+            <param name="function">Synchronous function to be executed on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync``1(Windows.ApplicationModel.Core.CoreApplicationView,System.Func{``0},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given function on a given view's UI thread.
+            </summary>
+            <typeparam name="T">Returned data type of the function.</typeparam>
+            <param name="viewToExecuteOn">View for the <paramref name="function" /> to be executed on.</param>
+            <param name="function">Synchronous function with return type <typeparamref name="T" /> to be executed on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync(Windows.ApplicationModel.Core.CoreApplicationView,System.Func{System.Threading.Tasks.Task},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given function on a given view's UI thread.
+            </summary>
+            <param name="viewToExecuteOn">View for the <paramref name="function" /> to be executed on.</param>
+            <param name="function">Asynchronous function to be executed asynchronously on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.ExecuteOnUIThreadAsync``1(Windows.ApplicationModel.Core.CoreApplicationView,System.Func{System.Threading.Tasks.Task{``0}},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Executes the given function on a given view's UI thread.
+            </summary>
+            <typeparam name="T">Returned data type of the function.</typeparam>
+            <param name="viewToExecuteOn">View for the <paramref name="function" />  to be executed on.</param>
+            <param name="function">Asynchronous function to be executed asynchronously on UI thread.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.AwaitableRunAsync(Windows.UI.Core.CoreDispatcher,System.Action,Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Extension method for <see cref="T:Windows.UI.Core.CoreDispatcher" />. Offering an actual awaitable <see cref="T:System.Threading.Tasks.Task" /> with optional result that will be executed on the given dispatcher.
+            </summary>
+            <param name="dispatcher">Dispatcher of a thread to run <paramref name="function" />.</param>
+            <param name="function"> Function to be executed on the given dispatcher.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.AwaitableRunAsync``1(Windows.UI.Core.CoreDispatcher,System.Func{``0},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Extension method for <see cref="T:Windows.UI.Core.CoreDispatcher" />. Offering an actual awaitable <see cref="T:System.Threading.Tasks.Task`1" /> with optional result that will be executed on the given dispatcher.
+            </summary>
+            <typeparam name="T">Returned data type of the function.</typeparam>
+            <param name="dispatcher">Dispatcher of a thread to run <paramref name="function" />.</param>
+            <param name="function"> Function to be executed on the given dispatcher.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.AwaitableRunAsync(Windows.UI.Core.CoreDispatcher,System.Func{System.Threading.Tasks.Task},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Extension method for <see cref="T:Windows.UI.Core.CoreDispatcher" />. Offering an actual awaitable <see cref="T:System.Threading.Tasks.Task" /> with optional result that will be executed on the given dispatcher.
+            </summary>
+            <param name="dispatcher">Dispatcher of a thread to run <paramref name="function" />.</param>
+            <param name="function">Asynchronous function to be executed on the given dispatcher.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.DispatcherHelper.AwaitableRunAsync``1(Windows.UI.Core.CoreDispatcher,System.Func{System.Threading.Tasks.Task{``0}},Windows.UI.Core.CoreDispatcherPriority)">
+            <summary>
+            Extension method for <see cref="T:Windows.UI.Core.CoreDispatcher" />. Offering an actual awaitable <see cref="T:System.Threading.Tasks.Task`1" /> with optional result that will be executed on the given dispatcher.
+            </summary>
+            <typeparam name="T">Returned data type of the function.</typeparam>
+            <param name="dispatcher">Dispatcher of a thread to run <paramref name="function" />.</param>
+            <param name="function">Asynchronous function to be executed asynchronously on the given dispatcher.</param>
+            <param name="priority">Dispatcher execution priority, default is normal.</param>
+            <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> for the operation.</returns>
+            <remarks>If the current thread has UI access, <paramref name="function" /> will be invoked directly.</remarks>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper">
+            <summary>
+            Shared implementation of ObjectStorageHelper.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.#ctor(Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper" /> class,
+            which can read and write data using the provided <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" />;
+            In 6.1 and older the default Serializer was based on Newtonsoft.Json.
+            To implement an <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" /> based on System.Text.Json, Newtonsoft.Json, or DataContractJsonSerializer see https://aka.ms/wct/storagehelper-migration
+            </summary>
+            <param name="objectSerializer">The serializer to use.</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Settings">
+            <summary>
+            Gets or sets the settings container.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Folder">
+            <summary>
+            Gets or sets the storage folder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.KeyExists(System.String)">
+            <summary>
+            Determines whether a setting already exists.
+            </summary>
+            <param name="key">Key of the setting (that contains object)</param>
+            <returns>
+                <c>true</c> if the setting exists; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.KeyExists(System.String,System.String)">
+            <summary>
+            Determines whether a setting already exists in composite.
+            </summary>
+            <param name="compositeKey">Key of the composite (that contains settings)</param>
+            <param name="key">Key of the setting (that contains object)</param>
+            <returns>
+                <c>true</c> if the setting exists; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Read``1(System.String,``0)">
+            <summary>
+            Retrieves a single item by its key.
+            </summary>
+            <typeparam name="T">Type of object retrieved</typeparam>
+            <param name="key">Key of the object</param>
+            <param name="default">Default value of the object</param>
+            <returns>The T object</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Read``1(System.String,System.String,``0)">
+            <summary>
+            Retrieves a single item by its key in composite.
+            </summary>
+            <typeparam name="T">Type of object retrieved</typeparam>
+            <param name="compositeKey">Key of the composite (that contains settings)</param>
+            <param name="key">Key of the object</param>
+            <param name="default">Default value of the object</param>
+            <returns>The T object</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Save``1(System.String,``0)">
+            <summary>
+            Saves a single item by its key.
+            This method should be considered for objects that do not exceed 8k bytes during the lifetime of the application
+            (refers to <see cref="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.SaveFileAsync``1(System.String,``0)" /> for complex/large objects).
+            </summary>
+            <typeparam name="T">Type of object saved</typeparam>
+            <param name="key">Key of the value saved</param>
+            <param name="value">Object to save</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Save``1(System.String,System.Collections.Generic.IDictionary{System.String,``0})">
+            <summary>
+            Saves a group of items by its key in a composite.
+            This method should be considered for objects that do not exceed 8k bytes during the lifetime of the application
+            (refers to <see cref="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.SaveFileAsync``1(System.String,``0)" /> for complex/large objects) and for groups of settings which
+            need to be treated in an atomic way.
+            </summary>
+            <typeparam name="T">Type of object saved</typeparam>
+            <param name="compositeKey">Key of the composite (that contains settings)</param>
+            <param name="values">Objects to save</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.FileExistsAsync(System.String)">
+            <summary>
+            Determines whether a file already exists.
+            </summary>
+            <param name="filePath">Key of the file (that contains object)</param>
+            <returns>
+                <c>true</c> if the file exists; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.ReadFileAsync``1(System.String,``0)">
+            <summary>
+            Retrieves an object from a file.
+            </summary>
+            <typeparam name="T">Type of object retrieved</typeparam>
+            <param name="filePath">Path to the file that contains the object</param>
+            <param name="default">Default value of the object</param>
+            <returns>Waiting task until completion with the object in the file</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.SaveFileAsync``1(System.String,``0)">
+            <summary>
+            Saves an object inside a file.
+            There is no limitation to use this method (refers to <see cref="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.Save``1(System.String,``0)" /> method for simple objects).
+            </summary>
+            <typeparam name="T">Type of object saved</typeparam>
+            <param name="filePath">Path to the file that will contain the object</param>
+            <param name="value">Object to save</param>
+            <returns>The <see cref="T:Windows.Storage.StorageFile" /> where the object was saved</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer">
+            <summary>
+            A basic serialization service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer.Serialize``1(``0)">
+            <summary>
+            Serialize an object into a string. It is recommended to use strings as the final format for objects if you plan to use the <see cref="M:Microsoft.Toolkit.Uwp.Helpers.BaseObjectStorageHelper.SaveFileAsync``1(System.String,``0)" /> method.
+            </summary>
+            <typeparam name="T">The type of the object to serialize.</typeparam>
+            <param name="value">The object to serialize.</param>
+            <returns>The serialized object.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer.Deserialize``1(System.Object)">
+            <summary>
+            Deserialize a primitive or string into an object of the given type.
+            </summary>
+            <typeparam name="T">The type of the deserialized object.</typeparam>
+            <param name="value">The string to deserialize.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper">
+            <summary>
+            Service used to store data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.KeyExists(System.String)">
+            <summary>
+            Determines whether a setting already exists.
+            </summary>
+            <param name="key">Key of the setting (that contains object)</param>
+            <returns>True if a value exists</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.KeyExists(System.String,System.String)">
+            <summary>
+            Determines whether a setting already exists in composite.
+            </summary>
+            <param name="compositeKey">Key of the composite (that contains settings)</param>
+            <param name="key">Key of the setting (that contains object)</param>
+            <returns>True if a value exists</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.Read``1(System.String,``0)">
+            <summary>
+            Retrieves a single item by its key.
+            </summary>
+            <typeparam name="T">Type of object retrieved</typeparam>
+            <param name="key">Key of the object</param>
+            <param name="default">Default value of the object</param>
+            <returns>The T object</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.Read``1(System.String,System.String,``0)">
+            <summary>
+            Retrieves a single item by its key in composite.
+            </summary>
+            <typeparam name="T">Type of object retrieved</typeparam>
+            <param name="compositeKey">Key of the composite (that contains settings)</param>
+            <param name="key">Key of the object</param>
+            <param name="default">Default value of the object</param>
+            <returns>The T object</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.Save``1(System.String,``0)">
+            <summary>
+            Saves a single item by its key.
+            </summary>
+            <typeparam name="T">Type of object saved</typeparam>
+            <param name="key">Key of the value saved</param>
+            <param name="value">Object to save</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.Save``1(System.String,System.Collections.Generic.IDictionary{System.String,``0})">
+            <summary>
+            Saves a group of items by its key in a composite.
+            This method should be considered for objects that do not exceed 8k bytes during the lifetime of the application
+            (refers to <see cref="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.SaveFileAsync``1(System.String,``0)" /> for complex/large objects) and for groups of settings which
+            need to be treated in an atomic way.
+            </summary>
+            <typeparam name="T">Type of object saved</typeparam>
+            <param name="compositeKey">Key of the composite (that contains settings)</param>
+            <param name="values">Objects to save</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.FileExistsAsync(System.String)">
+            <summary>
+            Determines whether a file already exists.
+            </summary>
+            <param name="filePath">Key of the file (that contains object)</param>
+            <returns>True if a value exists</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.ReadFileAsync``1(System.String,``0)">
+            <summary>
+            Retrieves an object from a file.
+            </summary>
+            <typeparam name="T">Type of object retrieved</typeparam>
+            <param name="filePath">Path to the file that contains the object</param>
+            <param name="default">Default value of the object</param>
+            <returns>Waiting task until completion with the object in the file</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.IObjectStorageHelper.SaveFileAsync``1(System.String,``0)">
+            <summary>
+            Saves an object inside a file.
+            </summary>
+            <typeparam name="T">Type of object saved</typeparam>
+            <param name="filePath">Path to the file that will contain the object</param>
+            <param name="value">Object to save</param>
+            <returns>Waiting task until completion</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.LocalObjectStorageHelper">
+            <summary>
+            Store data in the Local environment (only on the current device).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.LocalObjectStorageHelper.#ctor(Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.LocalObjectStorageHelper" /> class,
+            which can read and write data using the provided <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" />;
+            In 6.1 and older the default Serializer was based on Newtonsoft.Json.
+            To implement an <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" /> based on System.Text.Json, Newtonsoft.Json, or DataContractJsonSerializer see https://aka.ms/wct/storagehelper-migration
+            </summary>
+            <param name="objectSerializer">The serializer to use.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.RoamingObjectStorageHelper">
+            <summary>
+            Store data in the Roaming environment (shared across all user devices).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.RoamingObjectStorageHelper.#ctor(Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.RoamingObjectStorageHelper" /> class,
+            which can read and write data using the provided <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" />;
+            In 6.1 and older the default Serializer was based on Newtonsoft.Json.
+            To implement an <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" /> based on System.Text.Json, Newtonsoft.Json, or DataContractJsonSerializer see https://aka.ms/wct/storagehelper-migration
+            </summary>
+            <param name="objectSerializer">The serializer to use.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.SystemSerializer">
+            <summary>
+            A bare-bones serializer which knows how to deal with primitive types and strings only. It will store them directly based on the <see cref="T:Windows.Storage.ApplicationDataContainer" /> API.
+            It is recommended for more complex scenarios to implement your own <see cref="T:Microsoft.Toolkit.Uwp.Helpers.IObjectSerializer" /> based on System.Text.Json, Newtonsoft.Json, or DataContractJsonSerializer see https://aka.ms/wct/storagehelper-migration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemSerializer.Deserialize``1(System.Object)">
+            <summary>
+            Take a primitive value from storage and return it as the requested type using the <see cref="M:System.Convert.ChangeType(System.Object,System.Type)" /> API.
+            </summary>
+            <typeparam name="T">Type to convert value to.</typeparam>
+            <param name="value">Value from storage to convert.</param>
+            <returns>Deserialized value or default value.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemSerializer.Serialize``1(``0)">
+            <summary>
+            Returns the value so that it can be serialized by the <see cref="T:Windows.Storage.ApplicationDataContainer" /> API directly.
+            </summary>
+            <typeparam name="T">Type to serialize from.</typeparam>
+            <param name="value">Value to serialize.</param>
+            <returns>String representation of value.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.PackageVersionHelper">
+            <summary>
+            This class provides static helper methods for <see cref="T:Windows.ApplicationModel.PackageVersion" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PackageVersionHelper.ToFormattedString(Windows.ApplicationModel.PackageVersion,System.Int32)">
+            <summary>
+            Returns a string representation of a version with the format 'Major.Minor.Build.Revision'.
+            </summary>
+            <param name="packageVersion">The <see cref="T:Windows.ApplicationModel.PackageVersion" /> to convert to a string</param>
+            <param name="significance">The number of version numbers to return, default is 4 for the full version number.</param>
+            <returns>Version string of the format 'Major.Minor.Build.Revision'</returns>
+            <example>
+            Package.Current.Id.Version.ToFormattedString(2); // Returns "7.0" for instance.
+            </example>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PackageVersionHelper.ToPackageVersion(System.String)">
+            <summary>
+            Converts a string representation of a version number to an equivalent <see cref="T:Windows.ApplicationModel.PackageVersion" />.
+            </summary>
+            <param name="formattedVersionNumber">Version string of the format 'Major.Minor.Build.Revision'</param>
+            <returns>The parsed <see cref="T:Windows.ApplicationModel.PackageVersion" /></returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.PrintHelper">
+            <summary>
+            Helper class used to simplify document printing.
+            It allows you to render a framework element per page.
+            </summary>
+            <remarks>Based on https://github.com/Microsoft/Windows-universal-samples/blob/master/Samples/Printing/cs/PrintHelper.cs</remarks>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.OnPrintSucceeded">
+            <summary>
+            Occurs when a print was successful.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.OnPrintFailed">
+            <summary>
+            Occurs when a print fails.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.OnPrintCanceled">
+            <summary>
+            Occurs when a print is canceled by the user.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.OnPreviewPagesCreated">
+            <summary>
+            Occurs after print preview pages are generated.
+            </summary>
+            <remarks>
+            You can use this event to tweak the final rendering by adding/moving controls in the page.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.ApplicationContentMarginLeft">
+            <summary>
+            Gets or sets the percentage of the app's margin width.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.ApplicationContentMarginTop">
+            <summary>
+            Gets or sets the percentage of the app's margin height.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._printDocument">
+            <summary>
+            PrintDocument is used to prepare the pages for printing.
+            Prepare the pages to print in the handlers for the Paginate, GetPreviewPage, and AddPages events.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._printDocumentSource">
+            <summary>
+            Marker interface for document source.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._printPreviewPages">
+            <summary>
+            The list of elements used to store the print preview pages.
+            This gives easy access to any desired preview page.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._printCanvas">
+            <summary>
+            A hidden canvas used to hold pages we wish to print.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._elementsToPrint">
+            <summary>
+            The list of elements to print.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._printHelperOptions">
+            <summary>
+            The options for the print dialog.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._defaultPrintHelperOptions">
+            <summary>
+            The default options for the print dialog.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.DispatcherQueue">
+            <summary>
+            Gets or sets which DispatcherQueue is used to dispatch UI updates.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.#ctor(Windows.UI.Xaml.Controls.Panel,Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions,Windows.System.DispatcherQueue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.PrintHelper" /> class.
+            </summary>
+            <param name="canvasContainer">XAML panel used to attach printing canvas. Can be hidden in your UI with Opacity = 0 for instance</param>
+            <param name="defaultPrintHelperOptions">Default settings for the print tasks</param>
+            <param name="dispatcherQueue">The DispatcherQueue that should be used to dispatch UI updates, or null if this is being called from the UI thread.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.AddFrameworkElementToPrint(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Adds an element to the list of elements to print.
+            </summary>
+            <param name="element">Framework element to print.</param>
+            <remarks>The element cannot have a parent; It must not be included in any visual tree.</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.RemoveFrameworkElementToPrint(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Removes an element from the list of elements to print.
+            </summary>
+            <param name="element">Framework element to remove</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.ClearListOfPrintableFrameworkElements">
+            <summary>
+            Removes all elements from the list of elements to print.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.ShowPrintUIAsync(System.String,System.Boolean)">
+            <summary>
+            Starts the print task.
+            </summary>
+            <param name="printTaskName">Name of the print task to use</param>
+            <param name="directPrint">Directly print the content of the container instead of relying on list built with <see cref="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.AddFrameworkElementToPrint(Windows.UI.Xaml.FrameworkElement)" /> method</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.ShowPrintUIAsync(System.String,Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions,System.Boolean)">
+            <summary>
+            Starts the print task.
+            </summary>
+            <param name="printTaskName">Name of the print task to use</param>
+            <param name="printHelperOptions">Settings for the print task</param>
+            <param name="directPrint">Directly print the content of the container instead of relying on list built with <see cref="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.AddFrameworkElementToPrint(Windows.UI.Xaml.FrameworkElement)" /> method</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.Dispose">
+            <summary>
+            Release associated resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.RegisterForPrinting">
+            <summary>
+            This function registers the app for printing with Windows and sets up the necessary event handlers for the print process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.PrintTaskRequested(Windows.Graphics.Printing.PrintManager,Windows.Graphics.Printing.PrintTaskRequestedEventArgs)">
+            <summary>
+            This is the event handler for PrintManager.PrintTaskRequested.
+            </summary>
+            <param name="sender">PrintManager</param>
+            <param name="e">PrintTaskRequestedEventArgs</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.CreatePrintPreviewPages(System.Object,Windows.UI.Xaml.Printing.PaginateEventArgs)">
+            <summary>
+            This is the event handler for <see cref="E:Windows.UI.Xaml.Printing.PrintDocument.Paginate" />.
+            It creates print preview pages for the app.
+            </summary>
+            <param name="sender">PrintDocument</param>
+            <param name="e">Paginate Event Arguments</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.GetPrintPreviewPage(System.Object,Windows.UI.Xaml.Printing.GetPreviewPageEventArgs)">
+            <summary>
+            This is the event handler for <see cref="E:Windows.UI.Xaml.Printing.PrintDocument.GetPreviewPage" />.
+            It provides a specific print preview page, in the form of an UIElement, to an instance of PrintDocument.
+            PrintDocument subsequently converts the UIElement into a page that the Windows print system can deal with.
+            </summary>
+            <param name="sender">PrintDocument</param>
+            <param name="e">Arguments containing the preview requested page</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.AddPrintPages(System.Object,Windows.UI.Xaml.Printing.AddPagesEventArgs)">
+            <summary>
+            This is the event handler for <see cref="E:Windows.UI.Xaml.Printing.PrintDocument.AddPages" />.
+            It provides all pages to be printed, in the form of UIElements, to an instance of PrintDocument.
+            PrintDocument subsequently converts the UIElements into a pages that the Windows print system can deal with.
+            </summary>
+            <param name="sender">PrintDocument</param>
+            <param name="e">Add page event arguments containing a print task options reference</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelper.AddOnePrintPreviewPage(Windows.UI.Xaml.FrameworkElement,Windows.Graphics.Printing.PrintPageDescription)">
+            <summary>
+            Creates and adds one print preview page to the internal cache of print preview pages stored in <see cref="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelper._printPreviewPages" />.
+            </summary>
+            <param name="element">FrameworkElement used to represent the "printing page"</param>
+            <param name="printPageDescription">Printer's page description</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions">
+            <summary>
+            Represents options used in a print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.Bordering">
+            <summary>
+            Gets or sets the bordering option for the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.MediaType">
+            <summary>
+            Gets or sets the media type option for the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.MediaSize">
+            <summary>
+            Gets or sets the media size option of the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.HolePunch">
+            <summary>
+            Gets or sets the hole punch option of the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.Binding">
+            <summary>
+            Gets or sets the binding option for the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.Duplex">
+            <summary>
+            Gets or sets the duplex option of the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.ColorMode">
+            <summary>
+            Gets or sets the color mode option of the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.Collation">
+            <summary>
+            Gets or sets the collation option of the print tasks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.PrintQuality">
+            <summary>
+            Gets or sets the print quality option for the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.Staple">
+            <summary>
+            Gets or sets the staple option for the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.Orientation">
+            <summary>
+            Gets or sets the orientation option for the print task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.DisplayedOptions">
+            <summary>
+            Gets the options that will be displayed in the printing dialog.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions._possibleDisplayOptions">
+            <summary>
+            The possible display options.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.ExtendDisplayedOptions">
+            <summary>
+            Gets or sets a value indicating whether the default displayed options should be kept.
+            Defaults to <c>true</c>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions" /> class.
+            </summary>
+            <param name="extendDisplayedOptions">Boolean used to set up the <see cref="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.ExtendDisplayedOptions" /> property</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.AddDisplayOption(System.String)">
+            <summary>
+            Adds a display option.
+            </summary>
+            <param name="displayOption">Display option to add. Must be a part of the <see cref="T:Windows.Graphics.Printing.StandardPrintTaskOptions" /> class</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelperOptions.RemoveDisplayOption(System.String)">
+            <summary>
+            Removes a display option.
+            </summary>
+            <param name="displayOption">Display option to add. Must be a part of the <see cref="T:Windows.Graphics.Printing.StandardPrintTaskOptions" /> class</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag">
+            <summary>
+            Internal class used to store values updated by <see cref="T:Microsoft.Toolkit.Uwp.Helpers.PrintHelper" />.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.HorizontalAlignment">
+            <summary>
+            Gets or sets the stored horizontal alignment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.VerticalAlignment">
+            <summary>
+            Gets or sets the stored vertical alignment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.Width">
+            <summary>
+            Gets or sets the stored width.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.Height">
+            <summary>
+            Gets or sets the stored height.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.Margin">
+            <summary>
+            Gets or sets the stored margin.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.Capture(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Captures the current element state.
+            </summary>
+            <param name="element">Element to capture state from</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.PrintHelperStateBag.Restore(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Restores stored state to given element.
+            </summary>
+            <param name="element">Element to restore state to</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper">
+            <summary>
+            Helper to List Remote Devices that are accessible
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper.RemoteSystems">
+            <summary>
+            Gets a List of All Remote Systems based on Selection Filter
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper.DispatcherQueue">
+            <summary>
+            Gets or sets which DispatcherQueue is used to dispatch UI updates.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper.#ctor(Windows.System.DispatcherQueue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper" /> class.
+            </summary>
+            <param name="dispatcherQueue">The DispatcherQueue that should be used to dispatch UI updates, or null if this is being called from the UI thread.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper.#ctor(System.Collections.Generic.List{Windows.System.RemoteSystems.IRemoteSystemFilter},Windows.System.DispatcherQueue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper" /> class.
+            </summary>
+            <param name="filter">Initiate Enumeration with specific RemoteSystemKind with Filters</param>
+            <param name="dispatcherQueue">The DispatcherQueue that should be used to dispatch UI updates, or null if this is being called from the UI thread.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper.GenerateSystems">
+            <summary>
+            Initiate Enumeration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.RemoteDeviceHelper.GenerateSystemsWithFilterAsync(System.Collections.Generic.List{Windows.System.RemoteSystems.IRemoteSystemFilter})">
+            <summary>
+            Initiate Enumeration with specific RemoteSystemKind with Filters
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.ScreenUnit">
+            <summary>
+            Enumeration listing all screen units.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.ScreenUnit.Pixel">
+            <summary>
+            Pixel
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.ScreenUnit.Centimeter">
+            <summary>
+            Centimeter
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.ScreenUnit.Inch">
+            <summary>
+            Inch
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.ScreenUnit.EffectivePixel">
+            <summary>
+            Effective Pixel
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.ScreenUnitHelper">
+            <summary>
+            This class provides static helper methods for <see cref="T:Microsoft.Toolkit.Uwp.Helpers.ScreenUnit" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.ScreenUnitHelper.Convert(Microsoft.Toolkit.Uwp.Helpers.ScreenUnit,Microsoft.Toolkit.Uwp.Helpers.ScreenUnit,System.Single,Windows.UI.Xaml.XamlRoot)">
+            <summary>
+            Converts a screen unit to another screen unit (ex: 1cm =&gt; 37.7953px).
+            </summary>
+            <param name="from">Start unit</param>
+            <param name="to">End unit</param>
+            <param name="value">The value to convert (using start unit)</param>
+            <param name="xamlRoot">The XamlRoot that will be used to get the screen scale. Required on Xaml Islands.</param>
+            <returns>The result of the conversion</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper">
+            <summary>
+            This class provides static helper methods for <see cref="T:Windows.Storage.StorageFile" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteTextToLocalFileAsync(System.String,System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves a string value to a <see cref="T:Windows.Storage.StorageFile" /> in application local folder/&gt;.
+            </summary>
+            <param name="text">
+            The <see cref="T:System.String" /> value to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the text.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteTextToLocalCacheFileAsync(System.String,System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves a string value to a <see cref="T:Windows.Storage.StorageFile" /> in application local cache folder/&gt;.
+            </summary>
+            <param name="text">
+            The <see cref="T:System.String" /> value to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the text.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteTextToKnownFolderFileAsync(Windows.Storage.KnownFolderId,System.String,System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves a string value to a <see cref="T:Windows.Storage.StorageFile" /> in well known folder/&gt;.
+            </summary>
+            <param name="knownFolderId">
+            The well known folder ID to use.
+            </param>
+            <param name="text">
+            The <see cref="T:System.String" /> value to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the text.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteTextToFileAsync(Windows.Storage.StorageFolder,System.String,System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves a string value to a <see cref="T:Windows.Storage.StorageFile" /> in the given <see cref="T:Windows.Storage.StorageFolder" />.
+            </summary>
+            <param name="fileLocation">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to save the file in.
+            </param>
+            <param name="text">
+            The <see cref="T:System.String" /> value to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the text.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteBytesToLocalFileAsync(System.Byte[],System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves an array of bytes to a <see cref="T:Windows.Storage.StorageFile" /> to application local folder/&gt;.
+            </summary>
+            <param name="bytes">
+            The <see cref="T:System.Byte" /> array to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the bytes.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteBytesToLocalCacheFileAsync(System.Byte[],System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves an array of bytes to a <see cref="T:Windows.Storage.StorageFile" /> to application local cache folder/&gt;.
+            </summary>
+            <param name="bytes">
+            The <see cref="T:System.Byte" /> array to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the bytes.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteBytesToKnownFolderFileAsync(Windows.Storage.KnownFolderId,System.Byte[],System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves an array of bytes to a <see cref="T:Windows.Storage.StorageFile" /> to well known folder/&gt;.
+            </summary>
+            <param name="knownFolderId">
+            The well known folder ID to use.
+            </param>
+            <param name="bytes">
+            The <see cref="T:System.Byte" /> array to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the bytes.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.WriteBytesToFileAsync(Windows.Storage.StorageFolder,System.Byte[],System.String,Windows.Storage.CreationCollisionOption)">
+            <summary>
+            Saves an array of bytes to a <see cref="T:Windows.Storage.StorageFile" /> in the given <see cref="T:Windows.Storage.StorageFolder" />.
+            </summary>
+            <param name="fileLocation">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to save the file in.
+            </param>
+            <param name="bytes">
+            The <see cref="T:System.Byte" /> array to save to the file.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> name for the file.
+            </param>
+            <param name="options">
+            The creation collision options. Default is ReplaceExisting.
+            </param>
+            <returns>
+            The saved <see cref="T:Windows.Storage.StorageFile" /> containing the bytes.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the file location or file name are null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadTextFromPackagedFileAsync(System.String)">
+            <summary>
+            Gets a string value from a <see cref="T:Windows.Storage.StorageFile" /> located in the application installation folder.
+            </summary>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.String" /> value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadTextFromLocalCacheFileAsync(System.String)">
+            <summary>
+            Gets a string value from a <see cref="T:Windows.Storage.StorageFile" /> located in the application local cache folder.
+            </summary>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.String" /> value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadTextFromLocalFileAsync(System.String)">
+            <summary>
+            Gets a string value from a <see cref="T:Windows.Storage.StorageFile" /> located in the application local folder.
+            </summary>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.String" /> value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadTextFromKnownFoldersFileAsync(Windows.Storage.KnownFolderId,System.String)">
+            <summary>
+            Gets a string value from a <see cref="T:Windows.Storage.StorageFile" /> located in a well known folder.
+            </summary>
+            <param name="knownFolderId">
+            The well known folder ID to use.
+            </param>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.String" /> value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadTextFromFileAsync(Windows.Storage.StorageFolder,System.String)">
+            <summary>
+            Gets a string value from a <see cref="T:Windows.Storage.StorageFile" /> located in the given <see cref="T:Windows.Storage.StorageFolder" />.
+            </summary>
+            <param name="fileLocation">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to save the file in.
+            </param>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.String" /> value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadBytesFromPackagedFileAsync(System.String)">
+            <summary>
+            Gets an array of bytes from a <see cref="T:Windows.Storage.StorageFile" /> located in the application installation folder.
+            </summary>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.Byte" /> array.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadBytesFromLocalCacheFileAsync(System.String)">
+            <summary>
+            Gets an array of bytes from a <see cref="T:Windows.Storage.StorageFile" /> located in the application local cache folder.
+            </summary>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.Byte" /> array.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadBytesFromLocalFileAsync(System.String)">
+            <summary>
+            Gets an array of bytes from a <see cref="T:Windows.Storage.StorageFile" /> located in the application local folder.
+            </summary>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.Byte" /> array.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadBytesFromKnownFoldersFileAsync(Windows.Storage.KnownFolderId,System.String)">
+            <summary>
+            Gets an array of bytes from a <see cref="T:Windows.Storage.StorageFile" /> located in a well known folder.
+            </summary>
+            <param name="knownFolderId">
+            The well known folder ID to use.
+            </param>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.Byte" /> array.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadBytesFromFileAsync(Windows.Storage.StorageFolder,System.String)">
+            <summary>
+            Gets an array of bytes from a <see cref="T:Windows.Storage.StorageFile" /> located in the given <see cref="T:Windows.Storage.StorageFolder" />.
+            </summary>
+            <param name="fileLocation">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to save the file in.
+            </param>
+            <param name="fileName">
+            The relative <see cref="T:System.String" /> file path.
+            </param>
+            <returns>
+            The stored <see cref="T:System.Byte" /> array.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Exception thrown if the <paramref name="fileName" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.ReadBytesAsync(Windows.Storage.StorageFile)">
+            <summary>
+            Gets an array of bytes from a <see cref="T:Windows.Storage.StorageFile" />.
+            </summary>
+            <param name="file">
+            The <see cref="T:Windows.Storage.StorageFile" />.
+            </param>
+            <returns>
+            The stored <see cref="T:System.Byte" /> array.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.FileExistsAsync(Windows.Storage.StorageFolder,System.String,System.Boolean)">
+            <summary>
+            Gets a value indicating whether a file exists in the current folder.
+            </summary>
+            <param name="folder">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to look for the file in.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> filename of the file to search for. Must include the file extension and is not case-sensitive.
+            </param>
+            <param name="isRecursive">
+            The <see cref="T:System.Boolean" />, indicating if the subfolders should also be searched through.
+            </param>
+            <returns>
+                <c>true</c> if the file exists; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.IsFileNameValid(System.String)">
+            <summary>
+            Gets a value indicating whether a filename is correct or not using the Storage feature.
+            </summary>
+            <param name="fileName">The filename to test. Must include the file extension and is not case-sensitive.</param>
+            <returns>
+                <c>true</c> if the filename is valid; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.IsFilePathValid(System.String)">
+            <summary>
+            Gets a value indicating whether a file path is correct or not using the Storage feature.
+            </summary>
+            <param name="filePath">The file path to test. Must include the file extension and is not case-sensitive.</param>
+            <returns>
+                <c>true</c> if the file path is valid; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.FileExistsInFolderAsync(Windows.Storage.StorageFolder,System.String)">
+            <summary>
+            Gets a value indicating whether a file exists in the current folder.
+            </summary>
+            <param name="folder">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to look for the file in.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> filename of the file to search for. Must include the file extension and is not case-sensitive.
+            </param>
+            <returns>
+                <c>true</c> if the file exists; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.FileExistsInSubtreeAsync(Windows.Storage.StorageFolder,System.String)">
+            <summary>
+            Gets a value indicating whether a file exists in the current folder or in one of its subfolders.
+            </summary>
+            <param name="rootFolder">
+            The <see cref="T:Windows.Storage.StorageFolder" /> to look for the file in.
+            </param>
+            <param name="fileName">
+            The <see cref="T:System.String" /> filename of the file to search for. Must include the file extension and is not case-sensitive.
+            </param>
+            <returns>
+                <c>true</c> if the file exists; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Exception thrown if the <paramref name="fileName" /> contains a quotation mark.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StorageFileHelper.GetFolderFromKnownFolderId(Windows.Storage.KnownFolderId)">
+            <summary>
+            Returns a <see cref="T:Windows.Storage.StorageFolder" /> from a <see cref="T:Windows.Storage.KnownFolderId" /></summary>
+            <param name="knownFolderId">Folder Id</param>
+            <returns>The <see cref="T:Windows.Storage.StorageFolder" /></returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.StreamHelper">
+            <summary>
+            This class provides static helper methods for streams.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.GetHttpStreamAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Gets the response stream returned by a HTTP get request.
+            </summary>
+            <param name="uri">Uri to request.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> used to cancel the operation.</param>
+            <returns>The response stream</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.GetHttpStreamToStorageFileAsync(System.Uri,Windows.Storage.StorageFile)">
+            <summary>
+            Gets the response stream returned by a HTTP get request and save it to a local file.
+            </summary>
+            <param name="uri">Uri to request.</param>
+            <param name="targetFile">StorageFile to save the stream to.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.GetPackagedFileStreamAsync(System.String,Windows.Storage.FileAccessMode)">
+            <summary>
+            Gets a stream to a specified file from the installation folder.
+            </summary>
+            <param name="fileName">Relative name of the file to open. Can contains subfolders.</param>
+            <param name="accessMode">File access mode. Default is read.</param>
+            <returns>The file stream</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.GetLocalFileStreamAsync(System.String,Windows.Storage.FileAccessMode)">
+            <summary>
+            Gets a stream to a specified file from the application local folder.
+            </summary>
+            <param name="fileName">Relative name of the file to open. Can contains subfolders.</param>
+            <param name="accessMode">File access mode. Default is read.</param>
+            <returns>The file stream</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.GetLocalCacheFileStreamAsync(System.String,Windows.Storage.FileAccessMode)">
+            <summary>
+            Gets a stream to a specified file from the application local cache folder.
+            </summary>
+            <param name="fileName">Relative name of the file to open. Can contain subfolders.</param>
+            <param name="accessMode">File access mode. Default is read.</param>
+            <returns>The file stream</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.GetKnowFoldersFileStreamAsync(Windows.Storage.KnownFolderId,System.String,Windows.Storage.FileAccessMode)">
+            <summary>
+            Gets a stream to a specified file from the application local cache folder.
+            </summary>
+            <param name="knownFolderId">The well known folder ID to use</param>
+            <param name="fileName">Relative name of the file to open. Can contains subfolders.</param>
+            <param name="accessMode">File access mode. Default is read.</param>
+            <returns>The file stream</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.StreamHelper.ReadTextAsync(Windows.Storage.Streams.IRandomAccessStream,System.Text.Encoding)">
+            <summary>
+            Reads stream content as a string.
+            </summary>
+            <param name="stream">Stream to read from.</param>
+            <param name="encoding">Encoding to use. If set to null, ASCII will be used.</param>
+            <returns>The stream content</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.SystemInformation">
+            <summary>
+            This class provides info about the app and the system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.LaunchStoreForReviewAsync">
+            <summary>
+            Launches the store app so the user can leave a review.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+            <remarks>This method needs to be called from your UI thread.</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.Instance">
+            <summary>
+            Gets the unique instance of <see cref="T:Microsoft.Toolkit.Uwp.Helpers.SystemInformation" />.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.ApplicationName">
+            <summary>
+            Gets the application's name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.ApplicationVersion">
+            <summary>
+            Gets the application's version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.Culture">
+            <summary>
+            Gets the user's most preferred culture.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.DeviceFamily">
+            <summary>
+            Gets the device's family.
+            <para></para>
+            Common values include:
+            <list type="bullet"><item><term>"Windows.Desktop"</term></item><item><term>"Windows.Mobile"</term></item><item><term>"Windows.Xbox"</term></item><item><term>"Windows.Holographic"</term></item><item><term>"Windows.Team"</term></item><item><term>"Windows.IoT"</term></item></list><para></para>
+            Prepare your code for other values.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.OperatingSystem">
+            <summary>
+            Gets the operating system's name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.OperatingSystemVersion">
+            <summary>
+            Gets the operating system's version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.OperatingSystemArchitecture">
+            <summary>
+            Gets the processor architecture.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.AvailableMemory">
+            <summary>
+            Gets the available memory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.DeviceModel">
+            <summary>
+            Gets the device's model.
+            Will be empty if the model couldn't be determined (For example: when running in a virtual machine).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.DeviceManufacturer">
+            <summary>
+            Gets the device's manufacturer.
+            Will be empty if the manufacturer couldn't be determined (For example: when running in a virtual machine).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.IsFirstRun">
+            <summary>
+            Gets a value indicating whether the app is being used for the first time since it was installed.
+            Use this to tell if you should do or display something different for the app's first use.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.IsAppUpdated">
+            <summary>
+            Gets a value indicating whether the app is being used for the first time since being upgraded from an older version.
+            Use this to tell if you should display details about what has changed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.FirstVersionInstalled">
+            <summary>
+            Gets the first version of the app that was installed.
+            This will be the current version if a previous version of the app was installed before accessing this property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.FirstUseTime">
+            <summary>
+            Gets the DateTime (in UTC) when the app was launched for the first time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.LastLaunchTime">
+            <summary>
+            Gets the DateTime (in UTC) when the app was last launched, not including this instance.
+            Will be <see cref="F:System.DateTime.MinValue" /> if <see cref="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)" /> has not been called yet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.LaunchCount">
+            <summary>
+            Gets the number of times the app has been launched.
+            Will be <c>0</c> if <see cref="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)" /> has not been called yet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TotalLaunchCount">
+            <summary>
+            Gets the number of times the app has been launched.
+            Will be <c>0</c> if <see cref="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)" /> has not been called yet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.LaunchTime">
+            <summary>
+            Gets the DateTime (in UTC) that this instance of the app was launched.
+            Will be <see cref="F:System.DateTime.MinValue" /> if <see cref="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)" /> has not been called yet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.LastResetTime">
+            <summary>
+            Gets the DateTime (in UTC) when the launch count was last reset.
+            Will be <see cref="F:System.DateTime.MinValue" /> if <see cref="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)" /> has not been called yet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.AppUptime">
+            <summary>
+            Gets the length of time this instance of the app has been running.
+            Will be <see cref="F:System.TimeSpan.MinValue" /> if <see cref="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)" /> has not been called yet.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.TrackAppUse(Windows.ApplicationModel.Activation.IActivatedEventArgs,Windows.UI.Xaml.XamlRoot)">
+            <summary>
+            Tracks information about the app's launch.
+            </summary>
+            <param name="args">Details about the launch request and process.</param>
+            <param name="xamlRoot">The XamlRoot object from your visual tree.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.AddToAppUptime(System.TimeSpan)">
+            <summary>
+            Adds to the record of how long the app has been running.
+            Use this to optionally include time spent in background tasks or extended execution.
+            </summary>
+            <param name="duration">The amount to time to add</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.ResetLaunchCount">
+            <summary>
+            Resets the launch count.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.SystemInformation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.SystemInformation" /> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3">
+            <summary>
+            Implements a weak event listener that allows the owner to be garbage
+            collected if its only remaining link is an event handler.
+            </summary>
+            <typeparam name="TInstance">Type of instance listening for the event.</typeparam>
+            <typeparam name="TSource">Type of source for the event.</typeparam>
+            <typeparam name="TEventArgs">Type of event arguments for the event.</typeparam>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3._weakInstance">
+            <summary>
+            WeakReference to the instance listening for the event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3" /> class.
+            </summary>
+            <param name="instance">Instance subscribing to the event.</param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3.OnEventAction">
+            <summary>
+            Gets or sets the method to call when the event fires.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3.OnDetachAction">
+            <summary>
+            Gets or sets the method to call when detaching from the event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3.OnEvent(`1,`2)">
+            <summary>
+            Handler for the subscribed event calls OnEventAction to handle it.
+            </summary>
+            <param name="source">Event source.</param>
+            <param name="eventArgs">Event arguments.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.WeakEventListener`3.Detach">
+            <summary>
+            Detaches from the subscribed event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.Helpers.OSVersion">
+            <summary>
+            Defines Operating System version
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.OSVersion.Major">
+            <summary>
+            Value describing major version
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.OSVersion.Minor">
+            <summary>
+            Value describing minor version
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.OSVersion.Build">
+            <summary>
+            Value describing build
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.Helpers.OSVersion.Revision">
+            <summary>
+            Value describing revision
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.Helpers.OSVersion.ToString">
+            <summary>
+            Converts OSVersion to string
+            </summary>
+            <returns>Major.Minor.Build.Revision as a string</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2">
+            <summary>
+            This class represents an <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> whose items can be loaded incrementally.
+            </summary>
+            <typeparam name="TSource">
+            The data source that must be loaded incrementally.
+            </typeparam>
+            <typeparam name="IType">
+            The type of collection items.
+            </typeparam>
+            <seealso cref="T:Microsoft.Toolkit.Collections.IIncrementalSource`1" />
+            <seealso cref="T:Windows.UI.Xaml.Data.ISupportIncrementalLoading" />
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.OnStartLoading">
+            <summary>
+            Gets or sets an <see cref="T:System.Action" /> that is called when a retrieval operation begins.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.OnEndLoading">
+            <summary>
+            Gets or sets an <see cref="T:System.Action" /> that is called when a retrieval operation ends.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.OnError">
+            <summary>
+            Gets or sets an <see cref="T:System.Action" /> that is called if an error occurs during data retrieval. The actual <see cref="T:System.Exception" /> is passed as an argument.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.Source">
+            <summary>
+            Gets a value indicating the source of incremental loading.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.ItemsPerPage">
+            <summary>
+            Gets a value indicating how many items that must be retrieved for each incremental call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.CurrentPageIndex">
+            <summary>
+            Gets or sets a value indicating The zero-based index of the current items page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.IsLoading">
+            <summary>
+            Gets a value indicating whether new items are being loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.HasMoreItems">
+            <summary>
+            Gets a value indicating whether the collection contains more items to retrieve.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.#ctor(System.Int32,System.Action,System.Action,System.Action{System.Exception})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2" /> class optionally specifying how many items to load for each data page.
+            </summary>
+            <param name="itemsPerPage">
+            The number of items to retrieve for each call. Default is 20.
+            </param>
+            <param name="onStartLoading">
+            An <see cref="T:System.Action" /> that is called when a retrieval operation begins.
+            </param>
+            <param name="onEndLoading">
+            An <see cref="T:System.Action" /> that is called when a retrieval operation ends.
+            </param>
+            <param name="onError">
+            An <see cref="T:System.Action" /> that is called if an error occurs during data retrieval.
+            </param>
+            <seealso cref="T:Microsoft.Toolkit.Collections.IIncrementalSource`1" />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.#ctor(`0,System.Int32,System.Action,System.Action,System.Action{System.Exception})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2" /> class using the specified <see cref="T:Microsoft.Toolkit.Collections.IIncrementalSource`1" /> implementation and, optionally, how many items to load for each data page.
+            </summary>
+            <param name="source">
+            An implementation of the <see cref="T:Microsoft.Toolkit.Collections.IIncrementalSource`1" /> interface that contains the logic to actually load data incrementally.
+            </param>
+            <param name="itemsPerPage">
+            The number of items to retrieve for each call. Default is 20.
+            </param>
+            <param name="onStartLoading">
+            An <see cref="T:System.Action" /> that is called when a retrieval operation begins.
+            </param>
+            <param name="onEndLoading">
+            An <see cref="T:System.Action" /> that is called when a retrieval operation ends.
+            </param>
+            <param name="onError">
+            An <see cref="T:System.Action" /> that is called if an error occurs during data retrieval.
+            </param>
+            <seealso cref="T:Microsoft.Toolkit.Collections.IIncrementalSource`1" />
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.LoadMoreItemsAsync(System.UInt32)">
+            <summary>
+            Initializes incremental loading from the view.
+            </summary>
+            <param name="count">
+            The number of items to load.
+            </param>
+            <returns>
+            An object of the <see cref="M:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.LoadMoreItemsAsync(System.UInt32)" /> that specifies how many items have been actually retrieved.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.RefreshAsync">
+            <summary>
+            Clears the collection and triggers/forces a reload of the first page
+            </summary>
+            <returns>This method does not return a result</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.IncrementalLoadingCollection`2.LoadDataAsync(System.Threading.CancellationToken)">
+            <summary>
+            Actually performs the incremental loading.
+            </summary>
+            <param name="cancellationToken">
+            Used to propagate notification that operation should be canceled.
+            </param>
+            <returns>
+            Returns a collection of <typeparamref name="IType" />.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.HslColor">
+            <summary>
+            Defines a color in Hue/Saturation/Lightness (HSL) space.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HslColor.H">
+            <summary>
+            The Hue in 0..360 range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HslColor.S">
+            <summary>
+            The Saturation in 0..1 range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HslColor.L">
+            <summary>
+            The Lightness in 0..1 range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HslColor.A">
+            <summary>
+            The Alpha/opacity in 0..1 range.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.HsvColor">
+            <summary>
+            Defines a color in Hue/Saturation/Value (HSV) space.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HsvColor.H">
+            <summary>
+            The Hue in 0..360 range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HsvColor.S">
+            <summary>
+            The Saturation in 0..1 range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HsvColor.V">
+            <summary>
+            The Value in 0..1 range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.HsvColor.A">
+            <summary>
+            The Alpha/opacity in 0..1 range.
+            </summary>
+        </member>
+    </members>
+</doc>

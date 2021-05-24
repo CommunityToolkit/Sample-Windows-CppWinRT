@@ -196,6 +196,14 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <!-- We have to manually copy over our NuGet dlls for C++ -->
+    <!-- https://a.rcad.io/csharp-in-cppwinrt -->
+    <None Include="$(SolutionDir)dlls\**\*.*">
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CSharpIslandRuntimeComponent\CSharpIslandRuntimeComponent.csproj">
       <Project>{73981095-1ff4-4534-b473-8b9b351799da}</Project>
     </ProjectReference>
