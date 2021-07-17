@@ -22,5 +22,4 @@
 #include "winrt/Microsoft.UI.Xaml.XamlTypeInfo.h"
 
 // Our Runtime Component - Need to specify here, see https://github.com/microsoft/microsoft-ui-xaml/issues/5040
-// Note: We can't use any WinUI type duplicated in the OS see ... https://github.com/microsoft/microsoft-ui-xaml/issues/5041
 #include "winrt/CSharpIslandRuntimeComponent.CSharpIslandRuntimeComponent_XamlTypeInfo.h"
