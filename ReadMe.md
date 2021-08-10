@@ -37,7 +37,7 @@ It consists of two projects, the C++/WinRT application itself, and a new C# Wind
 
 ## How many Islands? 🏝
 
-It is up to you as a developer to decide if you'd want to leverage one larger 'Island' of space as a singular C# component for a majority of your application or sprinkle smaller individual components where they are needed. There are advantadges and disadvanges for both approach.
+It is up to you as a developer to decide if you'd want to leverage one larger 'Island' of space as a singular C# component for a majority of your application or sprinkle smaller individual components where they are needed. There are advantages and disadvantages for both approach.
 
 By having a singular island you can reduce the overhead with interoperating between your C++ application and the C# components; however, this means more of your development is occuring in C# and it may be easier to consider having your whole app layer as a C# application that references a C++/WinRT Windows Runtime Component to interop with other C++ libraries or your application logic in C++.
 
